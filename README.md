@@ -2,7 +2,7 @@
 
 ## Beta
 
-This is beta software, very lightly tested.
+This is beta software.
 
 ## Installation
 
@@ -25,7 +25,7 @@ A companion board package [stm32 tools](https://github.com/koendv/Arduino_Tools)
 
 ## AppImages
 
-Experimental AppImages:
+Download AppImage from releases and type:
 
 ```
 chmod +x Arduino_IDE-aarch64.AppImage
@@ -47,6 +47,8 @@ add backports to apt sources, needed for go 1.14.
 
 ```
 echo 'deb http://deb.debian.org/debian buster-backports main' >> /etc/apt/sources.list
+apt-key adv --keyserver   keyserver.ubuntu.com --recv-keys 7638D0442B90D010
+apt-key adv --keyserver   keyserver.ubuntu.com --recv-keys 04EE7237B7D453EC
 
 apt-get update -q --fix-missing
 apt-get install -y -q software-properties-common
@@ -160,13 +162,6 @@ cd  $APP_ROOT/..
 wget https://github.com/AppImage/AppImageKit/releases/download/continuous/appimagetool-aarch64.AppImage
 chmod +x ./appimagetool-aarch64.AppImage
 ARCH=arm_aarch64 ~/Downloads/appimagetool-aarch64.AppImage ./arduino-ide-appdir
-```
-
-For arm 32-bit, type:
-
-```
-cd  $APP_ROOT/..
-ARCH=arm ~/Downloads/appimagetool-aarch64.AppImage ./arduino-ide-appdir
 ```
 
 not truncated.
