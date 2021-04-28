@@ -6,28 +6,27 @@
 
 Installation is simply unzipping in a directory, eg. ``/opt/arduino-ide``
 
-For arm 32 bit:
-
+For arm 64 bit:
 ```
 mkdir /opt/arduino-ide
 cd /opt/arduino-ide
 unzip ~/Downloads/arduino-ide_2.0.0-beta.5-snapshot.0dd1e45_Linux_ARM64.zip
 ```
 
-For arm 64 bit:
-
-## AppImages
-
-Experimental AppImages:
-
-
-
-## Running
+To run:
 
 ```
 /opt/arduino-ide/arduino-ide
 ```
 
+## AppImages
+
+Experimental AppImages:
+
+```
+chmod +x Arduino_IDE-aarch64.AppImage
+./Arduino_IDE-aarch64.AppImage
+```
 
 ## Compiling the IDE
 
