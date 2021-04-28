@@ -2,6 +2,8 @@
 
 ## Beta
 
+This is beta software, very lightly tested.
+
 ## Installation
 
 Installation is simply unzipping in a directory, eg. ``/opt/arduino-ide``
@@ -18,6 +20,8 @@ To run:
 ```
 /opt/arduino-ide/arduino-ide
 ```
+
+A companion board package [stm32 tools](https://github.com/koendv/Arduino_Tools) allows compiling for STM32 Blue Pill.
 
 ## AppImages
 
