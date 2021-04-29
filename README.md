@@ -2,6 +2,9 @@
 
 ## Beta
 
+[![arduino ide 2.0](images/screenshot_small.jpg)](https://github.com/koendv/arduino-ide-raspberrypi/raw/main/images/screenshot.png)
+
+
 This is arduino-ide 2.0.0 beta for raspberry pi os 64-bi.
 
 ## Installation
@@ -31,6 +34,10 @@ To install the appimage, download [Arduino_IDE-aarch64.AppImage](https://github.
 chmod +x Arduino_IDE-aarch64.AppImage
 ./Arduino_IDE-aarch64.AppImage
 ```
+
+If you like this, maybe you want to buy me a cup of tea:
+
+[![ko-fi](images/kofibutton.svg)](https://ko-fi.com/Q5Q03LPDQ)
 
 ## Compiling the IDE
 
