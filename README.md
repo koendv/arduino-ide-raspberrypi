@@ -2,11 +2,11 @@
 
 ## Beta
 
-This is beta software.
+This is arduino-ide 2.0.0 beta for raspberry pi os 64-bi.
 
 ## Installation
 
-Installation is simply unzipping in a directory, eg. ``/opt/arduino-ide``
+Installation is downloading [arduino-ide_2.0.0-beta](https://github.com/koendv/arduino-ide-raspberrypi/releases/download/2.0.0-beta.5-snapshot.0dd1e45/arduino-ide_2.0.0-beta.5-snapshot.0dd1e45_Linux_ARM64.zip) and unzipping in a directory, eg. ``/opt/arduino-ide``
 
 For arm 64 bit:
 ```
@@ -24,8 +24,8 @@ To run:
 A companion board package [stm32 tools](https://github.com/koendv/Arduino_Tools) allows compiling for STM32 Blue Pill.
 
 ## AppImages
-
-Download AppImage from releases and type:
+arduino-ide is also available as appimage.
+To install the appimage, download [Arduino_IDE-aarch64.AppImage](https://github.com/koendv/arduino-ide-raspberrypi/releases/download/2.0.0-beta.5-snapshot.0dd1e45/Arduino_IDE-aarch64.AppImage) from releases and type:
 
 ```
 chmod +x Arduino_IDE-aarch64.AppImage
@@ -36,7 +36,7 @@ chmod +x Arduino_IDE-aarch64.AppImage
 
 At this moment, arduino IDE 2.0.0 is in beta.
 The arduino ide requires [clangd](https://github.com/llvm/llvm-project/tree/main/clang-tools-extra/clangd), [arduino language server](), and the [arduino cli](). 
-At this moment, this requires compiling clangd and arduino-language-server from source.
+These are instructions on compiling clangd and arduino-language-server from source. Alternatively, download clangd and arduino-language-server binaries from [releases](https://github.com/koendv/arduino-ide-raspberrypi/releases/)
 
  
 To compile the arduino ide on raspberry:
