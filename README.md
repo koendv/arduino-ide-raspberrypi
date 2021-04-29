@@ -5,13 +5,13 @@
 [![arduino ide 2.0](images/screenshot_small.jpg)](https://github.com/koendv/arduino-ide-raspberrypi/raw/main/images/screenshot.png)
 
 
-This is arduino-ide 2.0.0 beta for raspberry pi os 64-bi.
+This is [arduino-ide 2.0.0 beta](https://github.com/arduino/arduino-ide) compiled for raspberry pi os 64-bit.
 
 ## Installation
 
-Installation is downloading [arduino-ide_2.0.0-beta](https://github.com/koendv/arduino-ide-raspberrypi/releases/download/2.0.0-beta.5-snapshot.0dd1e45/arduino-ide_2.0.0-beta.5-snapshot.0dd1e45_Linux_ARM64.zip) and unzipping in a directory, eg. ``/opt/arduino-ide``
+Installation is downloading [arduino-ide_2.0.0-beta](https://github.com/koendv/arduino-ide-raspberrypi/releases/download/2.0.0-beta.5-snapshot.0dd1e45/arduino-ide_2.0.0-beta.5-snapshot.0dd1e45_Linux_ARM64.zip) and unzipping in a directory, eg. ``/opt/arduino-ide``:
 
-For arm 64 bit:
+
 ```
 mkdir /opt/arduino-ide
 cd /opt/arduino-ide
@@ -170,5 +170,6 @@ wget https://github.com/AppImage/AppImageKit/releases/download/continuous/appima
 chmod +x ./appimagetool-aarch64.AppImage
 ARCH=arm_aarch64 ~/Downloads/appimagetool-aarch64.AppImage ./arduino-ide-appdir
 ```
+This creates the file ``Arduino_IDE-aarch64.AppImage``.
 
 not truncated.
