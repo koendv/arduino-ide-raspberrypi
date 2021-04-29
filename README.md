@@ -42,6 +42,6 @@ If you like this, maybe you want to buy me a cup of tea:
 
 ## Developers
 
-Compilation notes are in ``README-DEVELOPER.md``
+Compilation notes are in [README-DEVELOPER.md](README-DEVELOPER.md)
 
 not truncated.
