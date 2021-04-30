@@ -27,6 +27,8 @@ To run:
 
 A companion board package [stm32 tools](https://github.com/koendv/Arduino_Tools) allows compiling for STM32 Blue Pill.
 
+Home directory on external usb disk recommended; home directory on internal sd card can be painfully slow.
+
 ## AppImages
 arduino-ide is also available as appimage.
 To install the appimage, download [Arduino_IDE-aarch64.AppImage](https://github.com/koendv/arduino-ide-raspberrypi/releases/download/2.0.0-beta.5-snapshot.0dd1e45/Arduino_IDE-aarch64.AppImage) from releases and type:

@@ -81,7 +81,8 @@ Continue the build
 ```
 cd $ARD_DIR
 wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
- . ~/.nvm/nvm.sh
+ . ~/.config/nvm/nvm.sh
+ . ~/.config/nvm/bash_completion
 nvm install 12.14.1
 npm install --global yarn
 npm install "@octokit/core@>=3"
@@ -90,8 +91,16 @@ npm install "less@^2.3.1"
 npm install "font-awesome@>=4.3.0"
 npm install request
 
+# needs /usr/lib/arm-linux-gnueabihf/pkgconfig/xkbfile.pc
+export PKG_CONFIG_PATH=/usr/lib/arm-linux-gnueabihf/pkgconfig/
 yarn
 yarn rebuild:electron
+```
+At this point, you can run arduino-ide with: ```yarn start```
+
+Continue with packaging:
+
+```
 yarn --cwd ./electron/packager/
 yarn --cwd ./electron/packager/ package
 
