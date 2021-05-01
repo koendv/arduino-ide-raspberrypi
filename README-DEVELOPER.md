@@ -33,6 +33,8 @@ apt-get install autoconf automake libtool curl make cmake ninja-build g++ unzip
 
 ## clangd
 
+Download clangd from [releases](https://github.com/koendv/arduino-ide-raspberrypi/releases/), or compile clangd from sources:
+
 ```
 git clone -b llvmorg-12.0.0 https://github.com/llvm/llvm-project
 cd llvm-project
@@ -41,11 +43,13 @@ mkdir build
 cd build
 cmake $LLVM_ROOT/llvm/ -DCMAKE_BUILD_TYPE=Release -DLLVM_ENABLE_PROJECTS="clang;clang-tools-extra" -DLLVM_STATIC_LINK_CXX_STDLIB=ON -DLLVM_BUILD_STATIC=ON -G Ninja
 cmake --build $LLVM_ROOT/build --target clangd
-zip -r clangd-12.0.0_Linux_aarch64.zip ./bin/clangd ./lib/clang/
+zip -r clangd-12.0.0_Linux_ARM64.zip ./bin/clangd ./lib/clang/
 ```
-Copy clangd-12.0.0_Linux_aarch64.zip, will be needed later.
+Copy clangd-12.0.0_Linux_ARM64.zip, will be needed later.
 
 ## arduino language server
+
+Download arduino-language-server from [releases](https://github.com/koendv/arduino-ide-raspberrypi/releases/), or compile arduino-language-server from sources:
 
 ```
 export PATH=/usr/lib/go-1.14/bin:$PATH
@@ -54,9 +58,9 @@ cd arduino-language-server
 go version
 # check go version 1.14
 go build
-zip arduino-language-server_Linux_aarch64.zip ./arduino-language-server
+zip arduino-language-server_Linux_ARM64.zip ./arduino-language-server
 ```
-Copy arduino-language-server_Linux_aarch64.zip, will be needed later.
+Copy arduino-language-server_Linux_ARM64.zip, will be needed later.
 
 ## arduino-cli
 
@@ -74,8 +78,8 @@ cd build
 ```
 unzip the two binaries created earlier in this directory:
 ```
-unzip ~/src/binaries/arduino-language-server_Linux_aarch64.zip
-unzip ~/src/binaries/clangd-12.0.0_Linux_aarch64.zip
+unzip ~/src/binaries/arduino-language-server_Linux_ARM64.zip
+unzip ~/src/binaries/clangd-12.0.0_Linux_ARM64.zip
 ```
 Continue the build
 ```
