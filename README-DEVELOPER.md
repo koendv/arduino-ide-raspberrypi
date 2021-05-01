@@ -8,7 +8,6 @@ These are compilation notes for [arduino-ide 2](https://github.com/arduino/ardui
 
 ## Compiling the IDE
 
-The arduino ide requires [clangd](https://github.com/llvm/llvm-project/tree/main/clang-tools-extra/clangd), [arduino language server](), and the [arduino cli](). 
 These are instructions on compiling arduino-ide from source.
 
 To compile the arduino ide on raspberry pi os:
@@ -62,11 +61,11 @@ Copy arduino-language-server_Linux_ARM64.zip, will be needed later.
 
 ## arduino-cli
 
-``arduino-cli`` binaries for Linux_ARMv6, Linux_ARMv7, Linux_ARM64 available from [arduino-cli git](https://github.com/arduino/arduino-cli). The binaries are downloaded by the build script.
+``arduino-cli`` binaries for Linux_ARMv6, Linux_ARMv7, Linux_ARM64 are available from [arduino-cli git](https://github.com/arduino/arduino-cli). The binaries are downloaded by the build script.
 
 ## arduino-ide
 
-Build the IDE. Download sources from git:
+Build the IDE. Download arduino-ide sources from git:
 
 ```
 git clone https://github.com/arduino/arduino-ide
