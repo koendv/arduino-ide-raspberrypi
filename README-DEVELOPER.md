@@ -8,12 +8,10 @@ These are compilation notes for [arduino-ide 2](https://github.com/arduino/ardui
 
 ## Compiling the IDE
 
-At this moment, arduino IDE 2.0.0 is in beta.
 The arduino ide requires [clangd](https://github.com/llvm/llvm-project/tree/main/clang-tools-extra/clangd), [arduino language server](), and the [arduino cli](). 
-These are instructions on compiling clangd and arduino-language-server from source. Alternatively, download clangd and arduino-language-server binaries from [releases](https://github.com/koendv/arduino-ide-raspberrypi/releases/)
+These are instructions on compiling arduino-ide from source.
 
- 
-To compile the arduino ide on raspberry:
+To compile the arduino ide on raspberry pi os:
 
 ## install debian packages
 
@@ -33,7 +31,7 @@ apt-get install autoconf automake libtool curl make cmake ninja-build g++ unzip
 
 ## clangd
 
-Download clangd from [releases](https://github.com/koendv/arduino-ide-raspberrypi/releases/), or compile clangd from sources:
+Download clangd binary from [releases](https://github.com/koendv/arduino-ide-raspberrypi/releases/), or compile clangd from sources:
 
 ```
 git clone -b llvmorg-12.0.0 https://github.com/llvm/llvm-project
@@ -49,7 +47,7 @@ Copy clangd-12.0.0_Linux_ARM64.zip, will be needed later.
 
 ## arduino language server
 
-Download arduino-language-server from [releases](https://github.com/koendv/arduino-ide-raspberrypi/releases/), or compile arduino-language-server from sources:
+Download arduino-language-server binary from [releases](https://github.com/koendv/arduino-ide-raspberrypi/releases/), or compile arduino-language-server from sources:
 
 ```
 export PATH=/usr/lib/go-1.14/bin:$PATH
@@ -64,9 +62,11 @@ Copy arduino-language-server_Linux_ARM64.zip, will be needed later.
 
 ## arduino-cli
 
-``arduino-cli`` binaries for Linux_ARMv6, Linux_ARMv7, Linux_ARM64 available from [arduino-cli git](https://github.com/arduino/arduino-cli). The binaries are downloaded by ``arduino-ide/arduino-ide-extension/scripts/download-cli.js`` 
+``arduino-cli`` binaries for Linux_ARMv6, Linux_ARMv7, Linux_ARM64 available from [arduino-cli git](https://github.com/arduino/arduino-cli). The binaries are downloaded by the build script.
 
 ## arduino-ide
+
+Build the IDE. Download sources from git:
 
 ```
 git clone https://github.com/arduino/arduino-ide
@@ -74,14 +74,14 @@ cd arduino-ide
 export ARD_DIR=$PWD
 cd $ARD_DIR/arduino-ide-extension/
 mkdir build
-cd build
 ```
-unzip the two binaries created earlier in this directory:
+unzip the clangd and arduino-language-server binaries in the directory ``arduino-ide-extension/build``:
 ```
+cd $ARD_DIR/arduino-ide-extension/build
 unzip ~/src/binaries/arduino-language-server_Linux_ARM64.zip
 unzip ~/src/binaries/clangd-12.0.0_Linux_ARM64.zip
 ```
-Continue the build
+Continue the build:
 ```
 cd $ARD_DIR
 wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
@@ -100,7 +100,7 @@ export PKG_CONFIG_PATH=/usr/lib/arm-linux-gnueabihf/pkgconfig/
 yarn
 yarn rebuild:electron
 ```
-At this point, you can run arduino-ide with: ```yarn start```
+At this point, you can test run arduino-ide with: ```yarn start```
 
 Continue with packaging:
 
@@ -141,6 +141,9 @@ wget -O arduino-ide.svg http://halley.cc/paste/arduino.svg
 wget -O AppRun https://github.com/AppImage/AppImageKit/releases/download/continuous/AppRun-aarch64
 chmod +x ./AppRun
 ```
+
+At this point, you can test run the arduino-ide with: ```./AppRun```
+
 Create the appimage. For aarch64, type:
 ```  
 cd  $APP_ROOT/..
