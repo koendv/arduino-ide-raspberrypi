@@ -129,14 +129,12 @@ Name=Arduino IDE
 Icon=arduino-ide
 Exec=arduino-ide %f
 MimeType=text/x-arduino;
-Categories=Development;
-Keywords=Arduino;Programming;Development;
+Categories=Development;Engineering;Electronics;
+Keywords=embedded electronics;electronics;microcontroller;
 X-AppImage-Version=2.0.0-beta5
 EOD
-# use icon that is not copyrighted
 wget -O arduino-ide.svg http://halley.cc/paste/arduino.svg 
-wget https://github.com/AppImage/AppImageKit/releases/download/continuous/AppRun-aarch64
-mv AppRun-aarch64 AppRun
+wget -O AppRun https://github.com/AppImage/AppImageKit/releases/download/continuous/AppRun-aarch64
 chmod +x ./AppRun
 ```
 Create the appimage. For aarch64, type:
