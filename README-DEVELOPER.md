@@ -74,18 +74,17 @@ export ARD_DIR=$PWD
 cd $ARD_DIR/arduino-ide-extension/
 mkdir build
 ```
-unzip your clangd and arduino-language-server binaries in the directory ``arduino-ide-extension/build``:
-```
-cd $ARD_DIR/arduino-ide-extension/build
-unzip ~/src/binaries/arduino-language-server_Linux_ARM64.zip
-unzip ~/src/binaries/clangd-12.0.0_Linux_ARM64.zip
-```
-or download and unzip pre-built clangd and arduino-language-server binaries:
+unzip your clangd and arduino-language-server binaries in the directory ``arduino-ide-extension/build``, or download and unzip pre-built clangd and arduino-language-server binaries:
 
 ```
 cd $ARD_DIR/arduino-ide-extension/build
-curl -L https://github.com/koendv/arduino-ide-raspberrypi/releases/download/2.0.0-beta.5-snapshot.0dd1e45/clangd-12.0.0_Linux_ARM64.zip | jar xv
-curl -L https://github.com/koendv/arduino-ide-raspberrypi/releases/download/2.0.0-beta.5-snapshot.0dd1e45/arduino-language-server_Linux_ARM64.zip | jar xv
+wget https://github.com/koendv/arduino-ide-raspberrypi/releases/download/2.0.0-beta.5-snapshot.0dd1e45/arduino-language-server_Linux_ARM64.zip
+unzip arduino-language-server_Linux_ARM64.zip
+rm -f arduino-language-server_Linux_ARM64.zip
+
+wget https://github.com/koendv/arduino-ide-raspberrypi/releases/download/2.0.0-beta.5-snapshot.0dd1e45/clangd-12.0.0_Linux_ARM64.zip
+unzip clangd-12.0.0_Linux_ARM64.zip
+rm -f clangd-12.0.0_Linux_ARM64.zip
 ```
  
 
