@@ -50,7 +50,7 @@ Download arduino-language-server binary from [releases](https://github.com/koend
 
 ```
 export PATH=/usr/lib/go-1.14/bin:$PATH
-git clone https://github.com/arduino/arduino-language-server
+git clone -b 2.0.0-beta.6 https://github.com/arduino/arduino-language-server
 cd arduino-language-server
 go version
 # check go version 1.14
@@ -129,7 +129,7 @@ mkdir -p arduino-ide-appdir/usr/bin arduino-ide-appdir/usr/lib
 cd arduino-ide-appdir
 export APP_ROOT=$PWD
 cd $APP_ROOT/usr/bin
-unzip unzip ~/src/binaries/arduino-ide_2.0.0-beta.5-snapshot.0dd1e45_Linux_ARM64.zip
+unzip unzip ~/src/binaries/arduino-ide_2.0.0-beta.6-snapshot.cd0f1b3_Linux_ARM64.zip
 cp *.so $APP_ROOT/usr/lib/
 cd $APP_ROOT
 cat >arduino-ide.desktop <<EOD
@@ -142,7 +142,7 @@ Exec=arduino-ide %f
 MimeType=text/x-arduino;
 Categories=Development;Engineering;Electronics;
 Keywords=embedded electronics;electronics;microcontroller;
-X-AppImage-Version=2.0.0-beta5
+X-AppImage-Version=2.0.0-beta6
 EOD
 wget -O arduino-ide.svg http://halley.cc/paste/arduino.svg 
 wget -O AppRun https://github.com/AppImage/AppImageKit/releases/download/continuous/AppRun-aarch64
