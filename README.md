@@ -16,7 +16,7 @@ Home directory on external usb disk recommended; home directory on internal sd c
 ## Installation as AppImage
 
 
-To install the appimage,download and run [Arduino_IDE-aarch64.AppImage](https://github.com/koendv/arduino-ide-raspberrypi/releases/latest/download/Arduino_IDE-aarch64.AppImage):
+To install the appimage, download and run [Arduino_IDE-aarch64.AppImage](https://github.com/koendv/arduino-ide-raspberrypi/releases/latest/download/Arduino_IDE-aarch64.AppImage):
 
 ```
 wget https://github.com/koendv/arduino-ide-raspberrypi/releases/latest/download/Arduino_IDE-aarch64.AppImage
@@ -26,7 +26,7 @@ chmod +x Arduino_IDE-aarch64.AppImage
 
 ## Installation from zip file
 
-To install, download `arduino-ide_2.*_Linux_ARM64.zip` from [releases](https://github.com/koendv/arduino-ide-raspberrypi/releases/latest) and unzip in a directory, eg.:
+To install from zip file, download `arduino-ide_2.*_Linux_ARM64.zip` from [releases](https://github.com/koendv/arduino-ide-raspberrypi/releases/latest) and unzip in a directory, eg.:
 
 To install:
 
@@ -35,7 +35,7 @@ mkdir ~/opt/arduino-ide
 cd ~/opt/arduino-ide
 unzip ~/Downloads/arduino-ide_2.0.0-*_Linux_ARM64.zip
 ```
-This unzips 2.400 directories with 11.000 files.
+This unzips 3.400 directories with 18.000 files.
 To run:
 
 ```
