@@ -9,16 +9,31 @@ This is [arduino-ide 2](https://github.com/arduino/arduino-ide) compiled for ras
 
 ## Installation
 
-Installation is downloading [arduino-ide_2.*_Linux_ARM64.zip](https://github.com/koendv/arduino-ide-raspberrypi/releases/download/2.0.0-beta.5-snapshot.0dd1e45/arduino-ide_2.0.0-beta.5-snapshot.0dd1e45_Linux_ARM64.zip) and unzipping in a directory, eg.:
+arduino-ide 2.0 is available both as appimage and as zip file.
+
+## Installation as AppImage
+
+
+To install the appimage,download and run [Arduino_IDE-aarch64.AppImage](https://github.com/koendv/arduino-ide-raspberrypi/releases/latest/download/Arduino_IDE-aarch64.AppImage):
+
+```
+wget https://github.com/koendv/arduino-ide-raspberrypi/releases/latest/download/Arduino_IDE-aarch64.AppImage
+chmod +x Arduino_IDE-aarch64.AppImage
+./Arduino_IDE-aarch64.AppImage
+```
+
+## Installation from zip file
+
+To install, download `arduino-ide_2.*_Linux_ARM64.zip` from [releases](https://github.com/koendv/arduino-ide-raspberrypi/releases/latest) and unzip in a directory, eg.:
 
 To install:
 
 ```
 mkdir ~/opt/arduino-ide
 cd ~/opt/arduino-ide
-unzip ~/Downloads/arduino-ide_2.0.0-beta.5-snapshot.0dd1e45_Linux_ARM64.zip
+unzip ~/Downloads/arduino-ide_2.0.0-*_Linux_ARM64.zip
 ```
-
+This unzips 18.000 files.
 To run:
 
 ```
@@ -29,14 +44,7 @@ A companion board package [stm32 tools](https://github.com/koendv/Arduino_Tools)
 
 Home directory on external usb disk recommended; home directory on internal sd card can be painfully slow.
 
-## AppImages
-arduino-ide is also available as appimage.
-To install the appimage, download [Arduino_IDE-aarch64.AppImage](https://github.com/koendv/arduino-ide-raspberrypi/releases/download/2.0.0-beta.5-snapshot.0dd1e45/Arduino_IDE-aarch64.AppImage) from releases and type:
 
-```
-chmod +x Arduino_IDE-aarch64.AppImage
-./Arduino_IDE-aarch64.AppImage
-```
 
 If you like this, maybe you want to buy me a cup of tea:
 
