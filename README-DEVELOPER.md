@@ -28,41 +28,6 @@ apt-get install autoconf automake libtool curl make cmake ninja-build g++ unzip
  export PATH=/usr/lib/go-1.14/bin:$PATH
 ```
 
-## clangd
-
-Download clangd binary from [releases](https://github.com/koendv/arduino-ide-raspberrypi/releases/), or compile clangd from sources:
-
-```
-git clone -b llvmorg-12.0.0 https://github.com/llvm/llvm-project
-cd llvm-project
-export LLVM_ROOT=$PWD
-mkdir build
-cd build
-cmake $LLVM_ROOT/llvm/ -DCMAKE_BUILD_TYPE=Release -DLLVM_ENABLE_PROJECTS="clang;clang-tools-extra" -DLLVM_STATIC_LINK_CXX_STDLIB=ON -DLLVM_BUILD_STATIC=ON -G Ninja
-cmake --build $LLVM_ROOT/build --target clangd
-zip -r clangd-12.0.0_Linux_ARM64.zip ./bin/clangd ./lib/clang/
-```
-Copy clangd-12.0.0_Linux_ARM64.zip, will be needed later.
-
-## arduino language server
-
-Download arduino-language-server binary from [releases](https://github.com/koendv/arduino-ide-raspberrypi/releases/), or compile arduino-language-server from sources:
-
-```
-export PATH=/usr/lib/go-1.14/bin:$PATH
-git clone -b 2.0.0-beta.6 https://github.com/arduino/arduino-language-server
-cd arduino-language-server
-go version
-# check go version 1.14
-go build
-zip arduino-language-server_Linux_ARM64.zip ./arduino-language-server
-```
-Copy arduino-language-server_Linux_ARM64.zip, will be needed later.
-
-## arduino-cli
-
-``arduino-cli`` binaries for Linux_ARMv6, Linux_ARMv7, Linux_ARM64 are available from [arduino-cli git](https://github.com/arduino/arduino-cli). The binaries are downloaded by the build script.
-
 ## arduino-ide
 
 Build the IDE. Download arduino-ide sources from git:
@@ -86,7 +51,7 @@ wget https://github.com/koendv/arduino-ide-raspberrypi/releases/download/2.0.0-b
 unzip clangd-12.0.0_Linux_ARM64.zip
 rm -f clangd-12.0.0_Linux_ARM64.zip
 ```
- 
+
 
 Continue the build:
 ```
@@ -129,7 +94,7 @@ mkdir -p arduino-ide-appdir/usr/bin arduino-ide-appdir/usr/lib
 cd arduino-ide-appdir
 export APP_ROOT=$PWD
 cd $APP_ROOT/usr/bin
-unzip unzip ~/src/binaries/arduino-ide_2.0.0-beta.6-snapshot.cd0f1b3_Linux_ARM64.zip
+unzip ~/src/arduino-ide/electron/build/dist/arduino-ide_2.0.0-beta.6-snapshot.cd0f1b3_Linux_ARM64.zip
 cp *.so $APP_ROOT/usr/lib/
 cd $APP_ROOT
 cat >arduino-ide.desktop <<EOD
@@ -144,7 +109,7 @@ Categories=Development;Engineering;Electronics;
 Keywords=embedded electronics;electronics;microcontroller;
 X-AppImage-Version=2.0.0-beta6
 EOD
-wget -O arduino-ide.svg http://halley.cc/paste/arduino.svg 
+wget -O arduino-ide.svg http://halley.cc/paste/arduino.svg
 wget -O AppRun https://github.com/AppImage/AppImageKit/releases/download/continuous/AppRun-aarch64
 chmod +x ./AppRun
 ```
@@ -152,12 +117,41 @@ chmod +x ./AppRun
 At this point, you can test run the arduino-ide with: ```./AppRun```
 
 Create the appimage. For aarch64, type:
-```  
+```
 cd  $APP_ROOT/..
 wget https://github.com/AppImage/AppImageKit/releases/download/continuous/appimagetool-aarch64.AppImage
 chmod +x ./appimagetool-aarch64.AppImage
-ARCH=arm_aarch64 ~/Downloads/appimagetool-aarch64.AppImage ./arduino-ide-appdir
+ARCH=arm_aarch64 ./appimagetool-aarch64.AppImage ./arduino-ide-appdir
 ```
 This creates the file ``Arduino_IDE-aarch64.AppImage``.
+
+## clangd
+
+The clangd binary from [releases](https://github.com/koendv/arduino-ide-raspberrypi/releases/) has been compiled like this:
+
+```
+git clone -b llvmorg-12.0.0 https://github.com/llvm/llvm-project
+cd llvm-project
+export LLVM_ROOT=$PWD
+mkdir build
+cd build
+cmake $LLVM_ROOT/llvm/ -DCMAKE_BUILD_TYPE=Release -DLLVM_ENABLE_PROJECTS="clang;clang-tools-extra" -DLLVM_STATIC_LINK_CXX_STDLIB=ON -DLLVM_BUILD_STATIC=ON -G Ninja
+cmake --build $LLVM_ROOT/build --target clangd
+zip -r clangd-12.0.0_Linux_ARM64.zip ./bin/clangd ./lib/clang/
+```
+
+## arduino language server
+
+The arduino-language-server binary from [releases](https://github.com/koendv/arduino-ide-raspberrypi/releases/) has been compiled like this:
+
+```
+export PATH=/usr/lib/go-1.14/bin:$PATH
+git clone -b 2.0.0-beta.6 https://github.com/arduino/arduino-language-server
+cd arduino-language-server
+go version
+# check go version 1.14
+go build
+zip arduino-language-server_Linux_ARM64.zip ./arduino-language-server
+```
 
 not truncated.
