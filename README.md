@@ -33,7 +33,7 @@ mkdir ~/opt/arduino-ide
 cd ~/opt/arduino-ide
 unzip ~/Downloads/arduino-ide_2.0.0-*_Linux_ARM64.zip
 ```
-This unzips 18.000 files.
+This unzips 2.400 directories with 11.000 files.
 To run:
 
 ```
