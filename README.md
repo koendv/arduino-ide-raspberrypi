@@ -44,7 +44,18 @@ To run:
 
 ## STM32duino
 
-A companion board package [stm32 tools](https://github.com/koendv/Arduino_Tools) allows compiling for STM32 Blue Pill on raspberry.
+A companion board package [stm32 tools](https://github.com/koendv/Arduino_Tools) allows compiling arduino sketches for STM32 Blue Pill on raspberry.
+
+To use, install the following packages on your raspberry pi:
+```
+sudo apt-get install stlink-tools stlink-gui stm32flash dfu-util
+```
+
+Start [Arduino IDE 2.0.0](https://github.com/koendv/arduino-ide-raspberrypi). From the menu choose *File->Preferences*. In *Additional boards manager URLSs*, add the following url:
+
+ ```https://raw.githubusercontent.com/koendv/BoardManagerFiles/master/package_stmicroelectronics_index.json```
+
+This installs the board support package for STM32. In the dropdown box *Select Other Board & Port* you should now be able to select STM32 boards.
 
 
 If you like this, maybe you want to buy me a cup of tea:
