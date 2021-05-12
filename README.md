@@ -11,6 +11,8 @@ This is [arduino-ide 2](https://github.com/arduino/arduino-ide) compiled for ras
 
 arduino-ide 2.0 is available both as appimage and as zip file.
 
+Home directory on external usb disk recommended; home directory on internal sd card can be painfully slow.
+
 ## Installation as AppImage
 
 
@@ -40,10 +42,9 @@ To run:
 ~/opt/arduino-ide/arduino-ide
 ```
 
-A companion board package [stm32 tools](https://github.com/koendv/Arduino_Tools) allows compiling for STM32 Blue Pill.
+## STM32duino
 
-Home directory on external usb disk recommended; home directory on internal sd card can be painfully slow.
-
+A companion board package [stm32 tools](https://github.com/koendv/Arduino_Tools) allows compiling for STM32 Blue Pill on raspberry.
 
 
 If you like this, maybe you want to buy me a cup of tea:
