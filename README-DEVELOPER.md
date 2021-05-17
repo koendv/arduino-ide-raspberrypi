@@ -10,7 +10,7 @@ These are compilation notes for [arduino-ide 2](https://github.com/arduino/ardui
 
 These are instructions on compiling arduino-ide from source.
 
-To compile the arduino ide on raspberry pi os:
+To compile the arduino ide, clangd and arduino language server on raspberry pi os:
 
 ## install debian packages
 
@@ -33,7 +33,7 @@ apt-get install autoconf automake libtool curl make cmake ninja-build g++ unzip
 Build the IDE. Download arduino-ide sources from git:
 
 ```
-git clone https://github.com/arduino/arduino-ide
+git clone -b 2.0.0-beta.7 https://github.com/arduino/arduino-ide
 cd arduino-ide
 export ARD_DIR=$PWD
 cd $ARD_DIR/arduino-ide-extension/
@@ -94,7 +94,7 @@ mkdir -p arduino-ide-appdir/usr/bin arduino-ide-appdir/usr/lib
 cd arduino-ide-appdir
 export APP_ROOT=$PWD
 cd $APP_ROOT/usr/bin
-unzip ~/src/arduino-ide/electron/build/dist/arduino-ide_2.0.0-beta.6-snapshot.cd0f1b3_Linux_ARM64.zip
+unzip ~/src/arduino-ide/electron/build/dist/arduino-ide_2.0.0-beta.7-snapshot.8c4e66f_Linux_ARM64.zip
 cp *.so $APP_ROOT/usr/lib/
 cd $APP_ROOT
 cat >arduino-ide.desktop <<EOD
@@ -107,7 +107,7 @@ Exec=arduino-ide %f
 MimeType=text/x-arduino;
 Categories=Development;Engineering;Electronics;
 Keywords=embedded electronics;electronics;microcontroller;
-X-AppImage-Version=2.0.0-beta6
+X-AppImage-Version=2.0.0-beta
 EOD
 wget -O arduino-ide.svg http://halley.cc/paste/arduino.svg
 wget -O AppRun https://github.com/AppImage/AppImageKit/releases/download/continuous/AppRun-aarch64
