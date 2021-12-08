@@ -9,7 +9,7 @@ This is [arduino-ide 2](https://github.com/arduino/arduino-ide) compiled for ras
 
 ## Installation
 
-arduino-ide 2.0 is available both as appimage and as zip file.
+arduino-ide 2.0 is available as appimage.
 
 Home directory on external usb disk recommended; home directory on internal sd card can be painfully slow.
 
@@ -22,24 +22,6 @@ To install the appimage, download and run [Arduino_IDE-aarch64.AppImage](https:/
 wget https://github.com/koendv/arduino-ide-raspberrypi/releases/latest/download/Arduino_IDE-aarch64.AppImage
 chmod +x Arduino_IDE-aarch64.AppImage
 ./Arduino_IDE-aarch64.AppImage
-```
-
-## Installation from zip file
-
-To install from zip file, download `arduino-ide_2.*_Linux_ARM64.zip` from [releases](https://github.com/koendv/arduino-ide-raspberrypi/releases/latest) and unzip in a directory, eg.:
-
-To install:
-
-```
-mkdir ~/opt/arduino-ide
-cd ~/opt/arduino-ide
-unzip ~/Downloads/arduino-ide_2.0.0-*_Linux_ARM64.zip
-```
-This unzips 3.400 directories with 18.000 files.
-To run:
-
-```
-~/opt/arduino-ide/arduino-ide
 ```
 
 ## STM32duino
