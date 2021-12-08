@@ -11,7 +11,7 @@ These are compilation notes for [arduino-ide 2](https://github.com/arduino/ardui
 These are instructions on compiling arduino-ide from source.
 Download pre-built clangd and arduino-language-server binaries from _releases_.
 
-Then execute [build-ide.sh](blob/main/build-ide.sh). Make sure ZIP_DIR points to the directory where you have downloaded the pre-built clangd and arduino-language-server binaries.
+Then execute [build-ide.sh](build-ide.sh). Make sure ZIP_DIR points to the directory where you have downloaded the pre-built clangd and arduino-language-server binaries.
 
 This creates the file ``$ARD_DIR/arduino-ide/electron/build/dist/arduino-ide_2.0.0-rc1-snapshot.767b09d_Linux_ARM64.zip ``
 
