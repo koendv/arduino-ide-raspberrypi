@@ -10,79 +10,34 @@ These are compilation notes for [arduino-ide 2](https://github.com/arduino/ardui
 
 These are instructions on compiling arduino-ide from source.
 
-To compile the arduino ide, clangd and arduino language server on raspberry pi os:
-
-## install debian packages
-
-add backports to apt sources, needed for go 1.14.
+Make sure ZIP_DIR points to the directory where you have downloaded the pre-built clangd and arduino-language-server binaries.
 
 ```
-echo 'deb http://deb.debian.org/debian buster-backports main' >> /etc/apt/sources.list
-apt-key adv --keyserver   keyserver.ubuntu.com --recv-keys 7638D0442B90D010
-apt-key adv --keyserver   keyserver.ubuntu.com --recv-keys 04EE7237B7D453EC
-
-apt-get update -q --fix-missing
-apt-get install -y -q software-properties-common
-apt-get install -y -q --no-install-recommends build-essential libssl-dev golang-1.14-go golang-1.14-go libxkbfile-dev libnss3-dev
-apt-get install autoconf automake libtool curl make cmake ninja-build g++ unzip
- export PATH=/usr/lib/go-1.14/bin:$PATH
-```
-
-## arduino-ide
-
-Build the IDE. Download arduino-ide sources from git:
-
-```
-git clone -b 2.0.0-beta.7 https://github.com/arduino/arduino-ide
+export ZIP_DIR=~/src/arduino-ide-builds
+apt-get install libxkbfile-dev libsecret-1-dev
+git clone https://github.com/arduino/arduino-ide
 cd arduino-ide
 export ARD_DIR=$PWD
 cd $ARD_DIR/arduino-ide-extension/
 mkdir build
-```
-unzip your clangd and arduino-language-server binaries in the directory ``arduino-ide-extension/build``, or download and unzip pre-built clangd and arduino-language-server binaries:
-
-```
-cd $ARD_DIR/arduino-ide-extension/build
-wget https://github.com/koendv/arduino-ide-raspberrypi/releases/download/2.0.0-beta.5-snapshot.0dd1e45/arduino-language-server_Linux_ARM64.zip
-unzip arduino-language-server_Linux_ARM64.zip
-rm -f arduino-language-server_Linux_ARM64.zip
-
-wget https://github.com/koendv/arduino-ide-raspberrypi/releases/download/2.0.0-beta.5-snapshot.0dd1e45/clangd-12.0.0_Linux_ARM64.zip
-unzip clangd-12.0.0_Linux_ARM64.zip
-rm -f clangd-12.0.0_Linux_ARM64.zip
-```
-
-
-Continue the build:
-```
+cd build
+unzip $ZIP_DIR/clangd-13.0.0_Linux_ARM64.zip
+unzip $ZIP_DIR/arduino-language-server_Linux_ARM64.zip
 cd $ARD_DIR
-wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
- . ~/.config/nvm/nvm.sh
- . ~/.config/nvm/bash_completion
+wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
+. ~/.config/nvm/nvm.sh
+. ~/.config/nvm/bash_completion
 nvm install 12.14.1
 npm install --global yarn
-npm install "@octokit/core@>=3"
-npm install "react@16.14.0" "react-dom@16.14.0"
-npm install "less@^2.3.1"
-npm install "font-awesome@>=4.3.0"
-npm install request
-
-# needs /usr/lib/arm-linux-gnueabihf/pkgconfig/xkbfile.pc
-export PKG_CONFIG_PATH=/usr/lib/arm-linux-gnueabihf/pkgconfig/
+npm install "filenamify@4.2.0" "react@16.14.0" "react-dom@16.14.0" "font-awesome@4.7.0" "request@2.88.2" "inversify@5.1.1" "vscode-textmate" "@octokit/core@>=3"
+yarn install --frozen-lockfile
 yarn
-yarn rebuild:electron
-```
-At this point, you can test run arduino-ide with: ```yarn start```
-
-Continue with packaging:
-
-```
+(cd electron-app; yarn theia rebuild:electron )
 yarn --cwd ./electron/packager/
 yarn --cwd ./electron/packager/ package
-
 ```
 
-This creates the file ``$ARD_DIR/electron/build/dist/arduino-ide_2.0.0-beta.5-snapshot.0dd1e45_Linux_ARM64.zip``
+This creates the file ``$ARD_DIR/arduino-ide/electron/build/dist/arduino-ide_2.0.0-rc1-snapshot.767b09d_Linux_ARM64.zip ``
 
 ## appimage
 
@@ -94,7 +49,7 @@ mkdir -p arduino-ide-appdir/usr/bin arduino-ide-appdir/usr/lib
 cd arduino-ide-appdir
 export APP_ROOT=$PWD
 cd $APP_ROOT/usr/bin
-unzip ~/src/arduino-ide/electron/build/dist/arduino-ide_2.0.0-beta.7-snapshot.8c4e66f_Linux_ARM64.zip
+unzip $ARD_DIR/arduino-ide/electron/build/dist/arduino-ide_2.0.0-rc1-snapshot.767b09d_Linux_ARM64.zip 
 cp *.so $APP_ROOT/usr/lib/
 cd $APP_ROOT
 cat >arduino-ide.desktop <<EOD
@@ -107,7 +62,7 @@ Exec=arduino-ide %f
 MimeType=text/x-arduino;
 Categories=Development;Engineering;Electronics;
 Keywords=embedded electronics;electronics;microcontroller;
-X-AppImage-Version=2.0.0-beta
+X-AppImage-Version=2.0.0-rc1
 EOD
 wget -O arduino-ide.svg http://halley.cc/paste/arduino.svg
 wget -O AppRun https://github.com/AppImage/AppImageKit/releases/download/continuous/AppRun-aarch64
