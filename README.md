@@ -1,9 +1,6 @@
 # arduino-ide 2.0.0 for Raspberry Pi
 
-## Beta
-
 [![arduino ide 2.0](images/screenshot_small.jpg)](https://github.com/koendv/arduino-ide-raspberrypi/raw/main/images/screenshot.png)
-
 
 This is [arduino-ide 2](https://github.com/arduino/arduino-ide) compiled for raspberry pi os 64-bit.
 
@@ -14,7 +11,6 @@ arduino-ide 2.0 is available as appimage.
 Home directory on external usb disk recommended; home directory on internal sd card can be painfully slow.
 
 ## Installation as AppImage
-
 
 To install the appimage, download and run [Arduino_IDE-aarch64.AppImage](https://github.com/koendv/arduino-ide-raspberrypi/releases/latest/download/Arduino_IDE-aarch64.AppImage):
 
