@@ -25,7 +25,7 @@ mkdir -p arduino-ide-appdir/usr/bin arduino-ide-appdir/usr/lib
 cd arduino-ide-appdir
 export APP_ROOT=$PWD
 cd $APP_ROOT/usr/bin
-unzip $ARD_DIR/arduino-ide/electron/build/dist/arduino-ide_2.0.0-rc1-snapshot.767b09d_Linux_ARM64.zip 
+unzip $ARD_DIR/arduino-ide/electron/build/dist/arduino-ide_2.0.0-rc2-snapshot.0b6fc0b_Linux_ARM64.zip
 cp *.so $APP_ROOT/usr/lib/
 cd $APP_ROOT
 cat >arduino-ide.desktop <<EOD
@@ -38,7 +38,7 @@ Exec=arduino-ide %f
 MimeType=text/x-arduino;
 Categories=Development;Engineering;Electronics;
 Keywords=embedded electronics;electronics;microcontroller;
-X-AppImage-Version=2.0.0-rc1
+X-AppImage-Version=2.0.0-rc2
 EOD
 wget -O arduino-ide.svg http://halley.cc/paste/arduino.svg
 wget -O AppRun https://github.com/AppImage/AppImageKit/releases/download/continuous/AppRun-aarch64
@@ -61,26 +61,28 @@ This creates the file ``Arduino_IDE-aarch64.AppImage``.
 The clangd binary from [releases](https://github.com/koendv/arduino-ide-raspberrypi/releases/) has been compiled like this:
 
 ```
-git clone -b llvmorg-12.0.0 https://github.com/llvm/llvm-project
+git clone -b llvmorg-13.0.0 https://github.com/llvm/llvm-project
 cd llvm-project
 export LLVM_ROOT=$PWD
 mkdir build
 cd build
 cmake $LLVM_ROOT/llvm/ -DCMAKE_BUILD_TYPE=Release -DLLVM_ENABLE_PROJECTS="clang;clang-tools-extra" -DLLVM_STATIC_LINK_CXX_STDLIB=ON -DLLVM_BUILD_STATIC=ON -G Ninja
 cmake --build $LLVM_ROOT/build --target clangd
-zip -r clangd-12.0.0_Linux_ARM64.zip ./bin/clangd ./lib/clang/
+zip -r clangd-13.0.0_Linux_ARM64.zip ./bin/clangd ./lib/clang/
 ```
 
 ## arduino language server
 
 The arduino-language-server binary from [releases](https://github.com/koendv/arduino-ide-raspberrypi/releases/) has been compiled like this:
 
+You need go 1.16 or higher. [Download](https://go.dev/dl/) and install if needed.
+
 ```
 export PATH=/usr/lib/go-1.14/bin:$PATH
 git clone -b 2.0.0-beta.6 https://github.com/arduino/arduino-language-server
 cd arduino-language-server
 go version
-# check go version 1.14
+# check go version 1.16 or higher
 go build
 zip arduino-language-server_Linux_ARM64.zip ./arduino-language-server
 ```
