@@ -15,8 +15,9 @@ wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
 . ~/.config/nvm/bash_completion
 nvm install 12.14.1
 npm install --global yarn
+# the version numbers are those found in the x86_64 linux build
 npm install "filenamify@4.2.0" "react@16.14.0" "react-dom@16.14.0" "font-awesome@4.7.0" "request@2.88.2" "inversify@5.1.1" "vscode-textmate" "@octokit/core@>=3"
-yarn install --frozen-lockfile
+yarn install
 yarn
 (cd electron-app; yarn theia rebuild:electron )
 yarn --cwd ./electron/packager/
