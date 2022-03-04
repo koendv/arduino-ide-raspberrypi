@@ -12,7 +12,7 @@ Home directory on external usb disk recommended; home directory on internal sd c
 
 ## Installation as AppImage
 
-To install, download and run the latest appimage [Arduino_IDE-aarch64.AppImage](https://github.com/koendv/arduino-ide-raspberrypi/releases/).
+To install, download and run the latest appimage [arduino-ide_*_Linux_ARM64.AppImage](https://github.com/koendv/arduino-ide-raspberrypi/releases/).
 
 If you like this, maybe you want to buy me a cup of tea:
 
