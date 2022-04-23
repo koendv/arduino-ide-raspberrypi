@@ -1,6 +1,6 @@
 #!/bin/bash -x
 sudo apt-get install libxkbfile-dev libsecret-1-dev
-git clone https://github.com/arduino/arduino-ide
+git clone -b 2.0.0-rc6 https://github.com/arduino/arduino-ide
 cd arduino-ide
 wget https://raw.githubusercontent.com/koendv/arduino-ide-raspberrypi/main/arduino-ide.patch
 patch -p1 < arduino-ide.patch
