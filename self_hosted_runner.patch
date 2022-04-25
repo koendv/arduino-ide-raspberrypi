@@ -1,0 +1,55 @@
+commit dee0abddc98abfbddb9cffbe9040d6c619ee5a38
+Author: Koen De Vleeschauwer <kdv@kdvelectronics.eu>
+Date:   Mon Apr 25 09:52:17 2022 +0200
+
+    arm64
+
+diff --git a/.github/workflows/build.yml b/.github/workflows/build.yml
+index 24a0b30..b01cdb8 100644
+--- a/.github/workflows/build.yml
++++ b/.github/workflows/build.yml
+@@ -19,15 +19,8 @@ env:
+ 
+ jobs:
+   build:
+-    if: github.repository == 'arduino/arduino-ide'
+-    strategy:
+-      matrix:
+-        config:
+-          - os: windows-2019
+-          - os: ubuntu-18.04 # https://github.com/arduino/arduino-ide/issues/259
+-          - os: macos-latest
+-    runs-on: ${{ matrix.config.os }}
+-    timeout-minutes: 90
++    runs-on: self-hosted
++    timeout-minutes: 180
+ 
+     steps:
+       - name: Checkout
+@@ -40,9 +33,7 @@ jobs:
+           registry-url: 'https://registry.npmjs.org'
+ 
+       - name: Install Python 3.x
+-        uses: actions/setup-python@v2
+-        with:
+-          python-version: '3.x'
++        run: sudo apt-get install -y python3
+ 
+       - name: Package
+         shell: bash
+diff --git a/arduino-ide-extension/scripts/download-ls.js b/arduino-ide-extension/scripts/download-ls.js
+index f00a8e6..aff22bc 100755
+--- a/arduino-ide-extension/scripts/download-ls.js
++++ b/arduino-ide-extension/scripts/download-ls.js
+@@ -79,6 +79,11 @@
+       lsSuffix = 'Linux_64bit.tar.gz';
+       clangdSuffix = 'Linux_64bit';
+       break;
++    case 'linux-arm64':
++      clangdExecutablePath = path.join(build, 'clangd');
++      lsSuffix = 'Linux_ARM64.tar.gz';
++      clangdSuffix = 'Linux_ARM64';
++      break;
+     case 'win32-x64':
+       clangdExecutablePath = path.join(build, 'clangd.exe');
+       lsSuffix = 'Windows_64bit.zip';
