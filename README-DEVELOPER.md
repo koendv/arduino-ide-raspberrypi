@@ -31,6 +31,7 @@ This requires setting up your raspberry pi as a github [self-hosted runner](http
 	- Architecture: ARM64
 - Follow instructions to create a self-hosted runner, from "Create a folder" to "Last step, run it!".
 - In "Actions" choose "Arduino IDE" and click "Run workflow"
+- After run, arm64 binaries for raspberry pi are in "Artifacts."
 
 On the runner:
 ```
