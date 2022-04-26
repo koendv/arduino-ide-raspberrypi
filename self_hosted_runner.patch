@@ -1,11 +1,11 @@
-commit dee0abddc98abfbddb9cffbe9040d6c619ee5a38
+commit 89b2fcc499c1ab216e944a88af1e75d27e408d4e
 Author: Koen De Vleeschauwer <kdv@kdvelectronics.eu>
-Date:   Mon Apr 25 09:52:17 2022 +0200
+Date:   Tue Apr 26 10:59:08 2022 +0200
 
     arm64
 
 diff --git a/.github/workflows/build.yml b/.github/workflows/build.yml
-index 24a0b30..b01cdb8 100644
+index 24a0b30..fdb1b59 100644
 --- a/.github/workflows/build.yml
 +++ b/.github/workflows/build.yml
 @@ -19,15 +19,8 @@ env:
@@ -37,6 +37,17 @@ index 24a0b30..b01cdb8 100644
  
        - name: Package
          shell: bash
+@@ -100,6 +91,10 @@ jobs:
+             name: Linux_X86-64_zip
+           - path: '*Linux_64bit.AppImage'
+             name: Linux_X86-64_app_image
++          - path: '*Linux_ARM64.zip'
++            name: Linux_ARM64_zip
++          - path: '*Linux_ARM64.AppImage'
++            name: Linux_ARM64_app_image
+           - path: '*macOS_64bit.dmg'
+             name: macOS_dmg
+           - path: '*macOS_64bit.zip'
 diff --git a/arduino-ide-extension/scripts/download-ls.js b/arduino-ide-extension/scripts/download-ls.js
 index f00a8e6..aff22bc 100755
 --- a/arduino-ide-extension/scripts/download-ls.js
