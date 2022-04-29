@@ -1,6 +1,6 @@
 # arduino-ide 2.0.0 for Raspberry Pi
 
-[![arduino ide 2.0](images/screenshot_small.jpg)](https://github.com/koendv/arduino-ide-raspberrypi/raw/main/images/screenshot.png)
+[![arduino ide 2.0](images/screenshot_small.jpg)](https://github.com/koendv/arduino-ide-raspberrypi/raw/main/images/screenshot.jpg)
 
 ## compiling the IDE
 
@@ -97,7 +97,7 @@ Current runner version: '2.290.1'
 ``Linux_ARM64_app_image`` and 
 ``Linux_ARM64_zip``. Click to download.
 
-- Cancel the ``run.sh`` command after the build is finished. Someone might fork _your_ repository, do a pull request and [run code on your raspberry](https://docs.github.com/en/actions/hosting-your-own-runners/about-self-hosted-runners#self-hosted-runner-security).
-This is not a problem for github; each github runner is always on a clean isolated virtual machine, and the virtual machine is destroyed at the end of the job execution  (``run.sh --ephemeral``).
+- When the build is completed, stop the ``run.sh`` command. Someone might fork _your_ repository, do a pull request and [run code on your raspberry](https://docs.github.com/en/actions/hosting-your-own-runners/about-self-hosted-runners#self-hosted-runner-security).
+
 
 not truncated.
