@@ -10,16 +10,15 @@ arduino-ide 2.0 is available as appimage.
 
 Home directory on external usb disk recommended; home directory on internal sd card can be painfully slow.
 
-## Installation as AppImage
+To install, download and run the latest appimage from [releases](https://github.com/koendv/arduino-ide-raspberrypi/releases/).
 
-To install, download and run the latest appimage [arduino-ide_*_Linux_ARM64.AppImage](https://github.com/koendv/arduino-ide-raspberrypi/releases/).
-
-If you like this, maybe you want to buy me a cup of tea:
-
-[![ko-fi](images/kofibutton.svg)](https://ko-fi.com/Q5Q03LPDQ)
 
 ## Developers
 
 Compilation notes are in [README-DEVELOPER.md](README-DEVELOPER.md)
+
+If you like this, maybe you want to buy me a cup of tea:
+
+[![ko-fi](images/kofibutton.svg)](https://ko-fi.com/Q5Q03LPDQ)
 
 not truncated.
