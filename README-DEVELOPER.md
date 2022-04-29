@@ -4,7 +4,7 @@
 
 ## compiling the IDE
 
-These are instructions on compiling for [arduino-ide 2](https://github.com/arduino/arduino-ide) from source on raspberry pi os 64-bit. Compiling using github actions, the same build process as on X86. 
+These are instructions on compiling for [arduino-ide 2](https://github.com/arduino/arduino-ide) from source on raspberry pi os 64-bit. Compiling is done using github actions, the same build process as on X86. 
 
 Compilation using github actions requires
 
@@ -27,6 +27,8 @@ nvm install 14.0.0
 npm install --global yarn
 ```
 
+- make sure python is python 3.
+
 ## patch arduino-ide
 
 Set up a copy of the arduino-ide github.
@@ -44,7 +46,7 @@ git commit -m arm64
 git push
 ```
 
-In .github/workflows/build.yml, this adds a new os "self-hosted", next to the existing Windows, Ubuntu and MacOS.
+In .github/workflows/build.yml, this adds a new os "self-hosted", next to Windows, Ubuntu and MacOS.
 
 ## configure self-hosted runner
 
