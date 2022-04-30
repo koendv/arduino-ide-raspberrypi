@@ -4,14 +4,14 @@
 
 ## compiling the IDE
 
-These are instructions on compiling for [arduino-ide 2](https://github.com/arduino/arduino-ide) from source on raspberry pi os 64-bit. Compiling is done using github actions, the same build process as on X86. 
+These are instructions on compiling for [arduino-ide 2](https://github.com/arduino/arduino-ide) from source on raspberry pi os 64-bit. Compiling is done using github actions, the same build process as on X86.
 
 Compilation using github actions requires
 
 - setting up your raspberry pi as a github [self-hosted runner](https://docs.github.com/en/actions/hosting-your-own-runners/about-self-hosted-runners)
 - patching arduino-ide to add arm64 processors to the build process.
 
-## set up raspberry pi 
+## set up raspberry pi
 
 On the raspberry pi runner:
 
@@ -37,7 +37,7 @@ Set up a copy of the arduino-ide github.
 - patch your fork with file self_hosted_runner.patch
 ```
 git clone https://github.com/koendv/arduino-ide-raspberrypi
-git clone https://github.com/koendv/arduino-ide
+git clone https://github.com/your_git_account/arduino-ide
 cd arduino-ide
 patch -p1 < ../arduino-ide-raspberrypi/self_hosted_runner.patch
 git add .github/workflows/build.yml
@@ -55,15 +55,9 @@ On github.com, go to your fork of the arduino-ide.
  In "Settings -> Actions -> Runners -> New Self-hosted Runner", choose:
 	- Runner image: Linux
 	- Architecture: ARM64
-- Follow instructions to create a self-hosted runner, from "Create a folder" to "Last step, run it!". On the raspberry pi, type:
-```
-mkdir actions-runner && cd actions-runner
-curl -o actions-runner-linux-arm64-2.290.1.tar.gz -L https://github.com/actions/runner/releases/download/v2.290.1/actions-runner-linux-arm64-2.290.1.tar.gz
-tar xzf ./actions-runner-linux-arm64-2.290.1.tar.gz
-./config.sh --url https://github.com/koendv/arduino-ide --token SECRET_TOKEN
-```
+- Follow instructions to create a self-hosted runner, from "Create a folder" to "Last step, run it!".
 
-Verify node and yarn are available, then start the runner:
+Verify node and yarn are available before starting the runner:
 
 ```
 node --version
@@ -79,9 +73,9 @@ On github.com, go to your fork of the arduino-ide.
 - In "Actions", under "Workflows" choose "Arduino IDE", enable workflow and click "Run workflow"
 - On the runner, output should be ``Running job: build (self-hosted)``. You can follow what happens in the build through the github web interface.
 
-Build time is 35-45 minutes on a raspberry pi 4b, 8gb ram. 
+Build time is 35-45 minutes on a raspberry pi 4b, 8gb ram.
 ```
- $ ./run.sh 
+ $ ./run.sh
 √ Connected to GitHub
 Current runner version: '2.290.1'
 2022-04-29 06:52:32Z: Listening for Jobs
@@ -91,13 +85,13 @@ Current runner version: '2.290.1'
 
 ## binaries
 
-- After the run, arm64 binaries for raspberry pi are in "Artifacts." 
+- After the run, arm64 binaries for raspberry pi are in "Artifacts."
 - On github.com, go to your fork of the arduino-ide. Under "All workflows - Showing runs from all workflows" click on "Arduino IDE". The binaries are under "Artifacts - Produced during runtime
-": 
-``Linux_ARM64_app_image`` and 
+":
+``Linux_ARM64_app_image`` and
 ``Linux_ARM64_zip``. Click to download.
 
 - When the build is completed, stop the ``run.sh`` command. Someone might fork _your_ repository, do a pull request and [run code on your raspberry](https://docs.github.com/en/actions/hosting-your-own-runners/about-self-hosted-runners#self-hosted-runner-security).
-
+ This is a concern for public git repositories only.
 
 not truncated.
