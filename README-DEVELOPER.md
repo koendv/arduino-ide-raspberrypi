@@ -92,6 +92,6 @@ Current runner version: '2.290.1'
 ``Linux_ARM64_zip``. Click to download.
 
 - When the build is completed, stop the ``run.sh`` command. Someone might fork _your_ repository, do a pull request and [run code on your raspberry](https://docs.github.com/en/actions/hosting-your-own-runners/about-self-hosted-runners#self-hosted-runner-security).
- This is a concern for public git repositories only.
+- When the binaries have been downloaded, delete your arduino-ide fork. It is no longer needed.
 
 not truncated.
