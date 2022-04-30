@@ -52,7 +52,8 @@ In .github/workflows/build.yml, this adds a new os "self-hosted", next to Window
 
 - configure a new self-hosted runner.
 On github.com, go to your fork of the arduino-ide.
- In "Settings -> Actions -> Runners -> New Self-hosted Runner", choose:
+- In _Settings -> Moderation options -> Code review limits_, enable  "Limit to users explicitly granted read or higher access"
+- In _Settings -> Actions -> Runners -> New Self-hosted Runner_, choose:
 	- Runner image: Linux
 	- Architecture: ARM64
 - Follow instructions to create a self-hosted runner, from "Create a folder" to "Last step, run it!".
@@ -91,7 +92,7 @@ Current runner version: '2.290.1'
 ``Linux_ARM64_app_image`` and
 ``Linux_ARM64_zip``. Click to download.
 
-- When the build is completed, stop the ``run.sh`` command. Someone might fork _your_ repository, do a pull request and [run code on your raspberry](https://docs.github.com/en/actions/hosting-your-own-runners/about-self-hosted-runners#self-hosted-runner-security).
+- When the build is completed, stop the ``run.sh`` command. Someone might fork _your_ repository, do a pull request and [run code on your raspberry](https://docs.github.com/en/actions/hosting-your-own-runners/about-self-hosted-runners#self-hosted-runner-security). Still, with "Limit to users explicitly granted read or higher access" enabled, you would have to explicitly grant the user access first.
 - When the binaries have been downloaded, delete your arduino-ide fork. It is no longer needed.
 
 not truncated.
