@@ -1,11 +1,11 @@
-commit d062b795070ac78c64e1aba85ae67d19a827e450
+commit b64499506a07323ff836b0d2f08d2af2e6d786b7
 Author: Koen De Vleeschauwer <kdv@kdvelectronics.eu>
-Date:   Thu Apr 28 11:28:00 2022 +0200
+Date:   Tue Jun 7 16:04:21 2022 +0200
 
     arm64
 
 diff --git a/.github/workflows/build.yml b/.github/workflows/build.yml
-index 24a0b30..355ca57 100644
+index 592b8fc..ee92556 100644
 --- a/.github/workflows/build.yml
 +++ b/.github/workflows/build.yml
 @@ -19,13 +19,14 @@ env:
@@ -35,7 +35,7 @@ index 24a0b30..355ca57 100644
          uses: actions/setup-python@v2
          with:
            python-version: '3.x'
-@@ -100,6 +102,10 @@ jobs:
+@@ -101,6 +103,10 @@ jobs:
              name: Linux_X86-64_zip
            - path: '*Linux_64bit.AppImage'
              name: Linux_X86-64_app_image
@@ -47,18 +47,19 @@ index 24a0b30..355ca57 100644
              name: macOS_dmg
            - path: '*macOS_64bit.zip'
 diff --git a/arduino-ide-extension/scripts/download-ls.js b/arduino-ide-extension/scripts/download-ls.js
-index f00a8e6..aff22bc 100755
+index 81b9329..7f63204 100755
 --- a/arduino-ide-extension/scripts/download-ls.js
 +++ b/arduino-ide-extension/scripts/download-ls.js
-@@ -79,6 +79,11 @@
+@@ -81,6 +81,12 @@
        lsSuffix = 'Linux_64bit.tar.gz';
        clangdSuffix = 'Linux_64bit';
        break;
 +    case 'linux-arm64':
 +      clangdExecutablePath = path.join(build, 'clangd');
++      clangFormatExecutablePath = path.join(build, 'clang-format');
 +      lsSuffix = 'Linux_ARM64.tar.gz';
 +      clangdSuffix = 'Linux_ARM64';
 +      break;
      case 'win32-x64':
        clangdExecutablePath = path.join(build, 'clangd.exe');
-       lsSuffix = 'Windows_64bit.zip';
+       clangFormatExecutablePath = path.join(build, 'clang-format.exe');

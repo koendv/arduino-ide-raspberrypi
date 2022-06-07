@@ -27,13 +27,17 @@ nvm install 14.0.0
 npm install --global yarn
 ```
 
-- make sure python is python 3.
+- make sure python is python 3, not python 2.
+
+```
+python -v
+```
 
 ## patch arduino-ide
 
 Set up a copy of the arduino-ide github.
 
-- in github, fork arduino/arduino-ide
+- in github, fork [arduino/arduino-ide](https://github.com/arduino/arduino-ide)
 - patch your fork with file self_hosted_runner.patch
 ```
 git clone https://github.com/koendv/arduino-ide-raspberrypi
@@ -58,7 +62,7 @@ On github.com, go to your fork of the arduino-ide.
 	- Architecture: ARM64
 - Follow instructions to create a self-hosted runner, from "Create a folder" to "Last step, run it!".
 
-Verify node and yarn are available before starting the runner:
+Verify node and yarn are available before starting the runner, and that the node version is as configured above, in ``nvm install``:
 
 ```
 node --version
