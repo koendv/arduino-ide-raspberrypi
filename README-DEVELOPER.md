@@ -20,17 +20,6 @@ On the raspberry pi runner:
 
 ```
 sudo apt-get install libxkbfile-dev libsecret-1-dev
-wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
-. ~/.config/nvm/nvm.sh
-. ~/.config/nvm/bash_completion
-nvm install 14.0.0
-npm install --global yarn
-```
-
-- make sure python is python 3, not python 2.
-
-```
-python -v
 ```
 
 ## patch arduino-ide
@@ -62,7 +51,27 @@ On github.com, go to your fork of the arduino-ide.
 	- Architecture: ARM64
 - Follow instructions to create a self-hosted runner, from "Create a folder" to "Last step, run it!".
 
-Verify node and yarn are available before starting the runner, and that the node version is as configured above, in ``nvm install``:
+## install node and yarn
+
+- Install node and yarn. node needs to be version 14.
+
+```
+wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
+. ~/.config/nvm/nvm.sh
+. ~/.config/nvm/bash_completion
+nvm install 14.0.0
+npm install --global yarn
+```
+
+- make sure python is python 3, not python 2.
+
+```
+python -v
+```
+
+## build ide
+
+Verify node and yarn are available before starting the runner.
 
 ```
 node --version
@@ -70,8 +79,6 @@ yarn --version
 ./run.sh
 ```
 This should output _Listening for Jobs_.
-
-## build ide
 
 On github.com, go to your fork of the arduino-ide.
 
@@ -88,7 +95,7 @@ Current runner version: '2.290.1'
 2022-04-29 07:37:11Z: Job build (self-hosted) completed with result: Succeeded
 ```
 
-## binaries
+## download binaries
 
 - After the run, arm64 binaries for raspberry pi are in "Artifacts."
 - On github.com, go to your fork of the arduino-ide. Under "All workflows - Showing runs from all workflows" click on "Arduino IDE". The binaries are under "Artifacts - Produced during runtime
