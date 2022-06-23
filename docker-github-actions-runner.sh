@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # before use, modify:
-# DOCKER_DIR is the directory of 'git clone https://github.com/myoung34/docker-github-actions-runner'
+# DOCKER_DIR is the directory of the Dockerfile
 # ACCESS_TOKEN is your github access token
 # REPO_URL is the url of your fork of the arduino ide
 

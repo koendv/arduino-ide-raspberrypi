@@ -38,10 +38,9 @@ git push
 In .github/workflows/build.yml, this adds a new os "self-hosted", next to Windows, Ubuntu and MacOS.
 
 ## configure self-hosted runner
-On github
-
-- configure a new self-hosted runner.
+Configure a new self-hosted runner.
 On github.com, go to your fork of the arduino-ide.
+
 - In _Settings -> Moderation options -> Code review limits_, enable  "Limit to users explicitly granted read or higher access"
 - In _Settings -> General -> Code and Automation -> Actions -> Runners_, click on _New Self-Hosted Runner_.
 
@@ -60,6 +59,7 @@ cp ../arduino-ide-raspberrypi/docker-github-actions-runner.sh .
 ```
 Edit `docker-github-actions-runner.sh`. 
 
+- DOCKER_DIR is the directory with the Dockerfile
 - REPO_URL should point to your fork or the arduino-ide
 - ACCESS_TOKEN should be your github access token (=password).
 
@@ -69,7 +69,7 @@ Start the self-hosted runner:
 ```
 
 
-This should output _Listening for Jobs_.
+This should output `Listening for Jobs`
 
 ## start the build
 
