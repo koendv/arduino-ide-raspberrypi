@@ -16,11 +16,7 @@ Compilation using github actions requires
 On the raspberry pi runner:
 
 - Install Raspberry Pi OS 64-bit.
-- install dependencies: node, yarn, and libraries.
-
-```
-sudo apt-get install libxkbfile-dev libsecret-1-dev
-```
+- install [docker](https://docs.docker.com/engine/install/debian/#install-using-the-convenience-script).
 
 ## patch arduino-ide
 
@@ -42,68 +38,65 @@ git push
 In .github/workflows/build.yml, this adds a new os "self-hosted", next to Windows, Ubuntu and MacOS.
 
 ## configure self-hosted runner
+On github
 
 - configure a new self-hosted runner.
 On github.com, go to your fork of the arduino-ide.
 - In _Settings -> Moderation options -> Code review limits_, enable  "Limit to users explicitly granted read or higher access"
-- In _Settings -> Actions -> Runners -> New Self-hosted Runner_, choose:
-	- Runner image: Linux
-	- Architecture: ARM64
-- Follow instructions to create a self-hosted runner, from "Create a folder" to "Last step, run it!".
+- In _Settings -> General -> Code and Automation -> Actions -> Runners_, click on _New Self-Hosted Runner_.
 
-## install node and yarn
+## set up docker
 
-- Install node and yarn. node needs to be version 14.
+For repeatability and convenience, the self-hosted runner runs in a docker image. On the raspberry, type:
 
 ```
-wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
-. ~/.config/nvm/nvm.sh
-. ~/.config/nvm/bash_completion
-nvm install 14.0.0
-npm install --global yarn
+git clone https://github.com/myoung34/docker-github-actions-runner
+cd docker-github-actions-runner
+patch -p1 < ../arduino-ide-raspberrypi/docker-github-actions-runner.patch
+```
+Copy the shell script to run docker:
+```
+cp ../arduino-ide-raspberrypi/docker-github-actions-runner.sh .
+```
+Edit `docker-github-actions-runner.sh`. 
+
+- REPO_URL should point to your fork or the arduino-ide
+- ACCESS_TOKEN should be your github access token (=password).
+
+Start the self-hosted runner:
+```
+./docker-github-actions-runner.sh
 ```
 
-- make sure python is python 3, not python 2.
 
-```
-python -v
-```
-
-## build ide
-
-Verify node and yarn are available before starting the runner.
-
-```
-node --version
-yarn --version
-./run.sh
-```
 This should output _Listening for Jobs_.
+
+## start the build
 
 On github.com, go to your fork of the arduino-ide.
 
-- In "Actions", under "Workflows" choose "Arduino IDE", enable workflow and click "Run workflow"
+- In "Actions", under "Workflows" choose "Arduino IDE", enable workflow.
+- Click "Run workflow"
 - On the runner, output should be ``Running job: build (self-hosted)``. You can follow what happens in the build through the github web interface.
 
-Build time is 35-45 minutes on a raspberry pi 4b, 8gb ram.
+Build time is less than one hour on a raspberry pi 4b, 8gb ram.
 ```
- $ ./run.sh
 √ Connected to GitHub
-Current runner version: '2.290.1'
-2022-04-29 06:52:32Z: Listening for Jobs
-2022-04-29 06:56:32Z: Running job: build (self-hosted)
-2022-04-29 07:37:11Z: Job build (self-hosted) completed with result: Succeeded
+
+Current runner version: '2.294.0'
+2022-06-23 13:07:35Z: Listening for Jobs
+2022-06-23 13:09:38Z: Running job: build (self-hosted)
+2022-06-23 13:54:14Z: Job build (self-hosted) completed with result: Succeeded
+
 ```
 
 ## download binaries
 
-- After the run, arm64 binaries for raspberry pi are in "Artifacts."
+- After the run, arm64 binaries for raspberry pi are on github, in "Artifacts."
 - On github.com, go to your fork of the arduino-ide. Under "All workflows - Showing runs from all workflows" click on "Arduino IDE". The binaries are under "Artifacts - Produced during runtime
 ":
 ``Linux_ARM64_app_image`` and
 ``Linux_ARM64_zip``. Click to download.
-
-- When the build is completed, stop the ``run.sh`` command. Someone might fork _your_ repository, do a pull request and [run code on your raspberry](https://docs.github.com/en/actions/hosting-your-own-runners/about-self-hosted-runners#self-hosted-runner-security). Still, with "Limit to users explicitly granted read or higher access" enabled, you would have to explicitly grant the user access first.
-- When the binaries have been downloaded, delete your arduino-ide fork. It is no longer needed.
+- When the build is completed, stop the runner and delete your arduino-ide fork. It is no longer needed.
 
 not truncated.
