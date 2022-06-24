@@ -35,7 +35,7 @@ git commit -m arm64
 git push
 ```
 
-In .github/workflows/build.yml, this adds a new os "self-hosted", next to Windows, Ubuntu and MacOS.
+The patch `self_hosted_runner.patch` adds a new build target "self-hosted", next to Windows, Ubuntu and MacOS.
 
 ## configure self-hosted runner
 Configure a new self-hosted runner.
@@ -46,30 +46,34 @@ On github.com, go to your fork of the arduino-ide.
 
 ## set up docker
 
-For repeatability and convenience, the self-hosted runner runs in a docker image. On the raspberry, type:
+For repeatability and convenience, the self-hosted runner runs in a docker image.
+
+On the raspberry, type:
 
 ```
 git clone https://github.com/myoung34/docker-github-actions-runner
 cd docker-github-actions-runner
 patch -p1 < ../arduino-ide-raspberrypi/docker-github-actions-runner.patch
 ```
-Copy the shell script to run docker:
+
+The patch `docker-github-actions-runner.patch` adds build dependencies - npm, yarn, and libraries - to the docker image.
+
+Next, copy the shell script to run docker:
 ```
 cp ../arduino-ide-raspberrypi/docker-github-actions-runner.sh .
 ```
 Edit `docker-github-actions-runner.sh`. 
 
 - DOCKER_DIR is the directory with the Dockerfile
-- REPO_URL should point to your fork or the arduino-ide
-- ACCESS_TOKEN should be your github access token (=password).
+- REPO_URL points to your fork of the arduino-ide
+- ACCESS_TOKEN is your github access token.
 
 Start the self-hosted runner:
 ```
 ./docker-github-actions-runner.sh
 ```
 
-
-This should output `Listening for Jobs`
+Output should end with `Listening for Jobs`
 
 ## start the build
 
@@ -97,6 +101,6 @@ Current runner version: '2.294.0'
 ":
 ``Linux_ARM64_app_image`` and
 ``Linux_ARM64_zip``. Click to download.
-- When the build is completed, stop the runner and delete your arduino-ide fork. It is no longer needed.
+- When the build is completed and the binaries downloaded, stop the runner and delete your arduino-ide fork. It is no longer needed.
 
 not truncated.
