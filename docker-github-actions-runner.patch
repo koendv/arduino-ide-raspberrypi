@@ -1,8 +1,14 @@
 diff --git a/Dockerfile b/Dockerfile
-index 4d87988..9b403a0 100644
+index 4d87988..870bd7b 100644
 --- a/Dockerfile
 +++ b/Dockerfile
-@@ -6,7 +6,7 @@ ENV AGENT_TOOLSDIRECTORY=/opt/hostedtoolcache
+@@ -1,12 +1,12 @@
+ # hadolint ignore=DL3007
+-FROM myoung34/github-runner-base:latest
++FROM myoung34/github-runner-base:ubuntu-bionic
+ LABEL maintainer="myoung34@my.apsu.edu"
+ 
+ ENV AGENT_TOOLSDIRECTORY=/opt/hostedtoolcache
  RUN mkdir -p /opt/hostedtoolcache
  
  ARG GH_RUNNER_VERSION="2.294.0"

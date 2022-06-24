@@ -24,6 +24,8 @@ Set up a copy of the arduino-ide github.
 
 - in github, fork [arduino/arduino-ide](https://github.com/arduino/arduino-ide)
 - patch your fork with file self_hosted_runner.patch
+- set a tag to show the release name
+
 ```
 git clone https://github.com/koendv/arduino-ide-raspberrypi
 git clone https://github.com/your_git_account/arduino-ide
@@ -33,6 +35,8 @@ git add .github/workflows/build.yml
 git add arduino-ide-extension/scripts/download-ls.js
 git commit -m arm64
 git push
+git tag -a 2.0.0-rc8-arm64 -m self-hosted
+git push --tags
 ```
 
 The patch `self_hosted_runner.patch` adds a new build target "self-hosted", next to Windows, Ubuntu and MacOS.
@@ -42,7 +46,7 @@ Configure a new self-hosted runner.
 On github.com, go to your fork of the arduino-ide.
 
 - In _Settings -> Moderation options -> Code review limits_, enable  "Limit to users explicitly granted read or higher access"
-- In _Settings -> General -> Code and Automation -> Actions -> Runners_, click on _New Self-Hosted Runner_.
+- In _Settings -> General -> Code and Automation -> Actions -> Runners_, click on _New Self-Hosted Runner_, Linux, ARM64.
 
 ## set up docker
 
@@ -79,8 +83,8 @@ Output should end with `Listening for Jobs`
 
 On github.com, go to your fork of the arduino-ide.
 
-- In "Actions", under "Workflows" choose "Arduino IDE", enable workflow.
-- Click "Run workflow"
+- In "Actions", under "Workflows" choose "Arduino IDE", click  "Enable Workflow".
+- Click "Run workflow". Use workflow from "Tags: 2.0.0-rc8-arm64" (the tag created above)
 - On the runner, output should be ``Running job: build (self-hosted)``. You can follow what happens in the build through the github web interface.
 
 Build time is less than one hour on a raspberry pi 4b, 8gb ram.
