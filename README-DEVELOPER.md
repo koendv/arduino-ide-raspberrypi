@@ -56,7 +56,7 @@ cd docker-github-actions-runner
 patch -p1 < ../arduino-ide-raspberrypi/docker-github-actions-runner.patch
 ```
 
-The patch `docker-github-actions-runner.patch` adds build dependencies - npm, yarn, and libraries - to the docker image.
+The patch `docker-github-actions-runner.patch` adds build dependencies - node, yarn, and libraries - to the docker image.
 
 Next, copy the shell script to run docker:
 ```
@@ -91,7 +91,6 @@ Current runner version: '2.294.0'
 2022-06-23 13:07:35Z: Listening for Jobs
 2022-06-23 13:09:38Z: Running job: build (self-hosted)
 2022-06-23 13:54:14Z: Job build (self-hosted) completed with result: Succeeded
-
 ```
 
 ## download binaries
@@ -101,6 +100,6 @@ Current runner version: '2.294.0'
 ":
 ``Linux_ARM64_app_image`` and
 ``Linux_ARM64_zip``. Click to download.
-- When the build is completed and the binaries downloaded, stop the runner and delete your arduino-ide fork. It is no longer needed.
+- When the build is completed and the binaries downloaded, stop the runner on the raspberry and delete your arduino-ide fork on github. It is no longer needed.
 
 not truncated.
