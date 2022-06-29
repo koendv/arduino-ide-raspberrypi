@@ -12,6 +12,7 @@ Home directory on external usb disk recommended; home directory on internal sd c
 
 To install, download and run the latest appimage from [releases](https://github.com/koendv/arduino-ide-raspberrypi/releases/).
 
+To run the appimage on ubuntu-arm64 install libz and fuse ``sudo apt-get install libz fuse`` and reboot.
 
 ## Developers
 
