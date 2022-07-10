@@ -1,5 +1,5 @@
 diff --git a/.github/workflows/build.yml b/.github/workflows/build.yml
-index 3dceb0c..b244eb3 100644
+index 3dceb0c..076b64e 100644
 --- a/.github/workflows/build.yml
 +++ b/.github/workflows/build.yml
 @@ -37,17 +37,18 @@ jobs:
@@ -51,15 +51,6 @@ index 3dceb0c..b244eb3 100644
            - path: '*macOS_64bit.dmg'
              name: macOS_dmg
            - path: '*macOS_64bit.zip'
-@@ -182,7 +188,7 @@ jobs:
- 
-   publish:
-     needs: changelog
--    if: github.repository == 'arduino/arduino-ide' && (github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main'))
-+    # if: github.repository == 'arduino/arduino-ide' && (github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main'))
-     runs-on: ubuntu-latest
-     steps:
-       - name: Download [GitHub Actions]
 diff --git a/arduino-ide-extension/scripts/download-ls.js b/arduino-ide-extension/scripts/download-ls.js
 index 81b9329..7f63204 100755
 --- a/arduino-ide-extension/scripts/download-ls.js
