@@ -35,8 +35,6 @@ git tag -a 2.0.0-rc8-arm64 -m self-hosted
 git push --tags
 ```
 
-
-
 ## set up docker
 
 For repeatability and security, the self-hosted runner runs in a docker image.

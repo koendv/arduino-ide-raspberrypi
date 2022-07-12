@@ -16,11 +16,13 @@ RUNNER_URL=https://github.com/koendv/docker-github-actions-runner
 if ! command -v docker
 then
   echo install docker
+  exit 0
 fi
 
 if ! command -v git
 then
   echo install git
+  exit 0
 fi
 
 # check if docker image exists
