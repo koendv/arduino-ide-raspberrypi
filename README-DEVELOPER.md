@@ -46,6 +46,8 @@ For repeatability and security, the self-hosted runner runs in a docker image.
 git clone https://github.com/koendv/docker-github-actions-runner
 cd docker-github-actions-runner
 patch -p1 < ../arduino-ide-raspberrypi/docker-github-actions-runner.patch
+git add Dockerfile
+git add entrypoint.sh
 git commit -m arduino-ide
 git push
 ```

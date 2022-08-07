@@ -1,5 +1,11 @@
+commit 377766df1b9d7a29bade4bc7f450c3d3682058b9
+Author: Koen De Vleeschauwer <kdv@kdvelectronics.eu>
+Date:   Sun Aug 7 18:58:02 2022 +0200
+
+    arduino-ide
+
 diff --git a/Dockerfile b/Dockerfile
-index 4d87988..870bd7b 100644
+index c1d5368..afb696c 100644
 --- a/Dockerfile
 +++ b/Dockerfile
 @@ -1,12 +1,12 @@
@@ -17,9 +23,9 @@ index 4d87988..870bd7b 100644
  
  SHELL ["/bin/bash", "-o", "pipefail", "-c"]
  
-@@ -17,6 +17,12 @@ RUN chmod +x /actions-runner/install_actions.sh \
-   && /actions-runner/install_actions.sh ${GH_RUNNER_VERSION} ${TARGETPLATFORM} \
-   && rm /actions-runner/install_actions.sh
+@@ -18,6 +18,16 @@ RUN chmod +x /actions-runner/install_actions.sh \
+   && rm /actions-runner/install_actions.sh \
+   && chown runner /_work /actions-runner /opt/hostedtoolcache
  
 +# install arduino ide build dependencies
 +RUN apt-get install -y libxkbfile-dev libsecret-1-dev
@@ -27,14 +33,18 @@ index 4d87988..870bd7b 100644
 +# install nvm
 +RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
 +
++# install go
++RUN wget -O - https://go.dev/dl/go1.17.13.linux-arm64.tar.gz | tar -C /usr/local -xzf -
++ENV PATH="${PATH}:/usr/local/go/bin"
++
  COPY token.sh entrypoint.sh /
  RUN chmod +x /token.sh /entrypoint.sh
  
 diff --git a/entrypoint.sh b/entrypoint.sh
-index 3b29d58..5df4be8 100644
+index a0fbf9e..6a99b65 100644
 --- a/entrypoint.sh
 +++ b/entrypoint.sh
-@@ -124,5 +124,9 @@ if [[ ${_DISABLE_AUTOMATIC_DEREGISTRATION} == "false" ]]; then
+@@ -129,6 +129,10 @@ if [[ ${_DISABLE_AUTOMATIC_DEREGISTRATION} == "false" ]]; then
    trap deregister_runner SIGINT SIGQUIT SIGTERM INT TERM QUIT
  fi
  
@@ -42,5 +52,6 @@ index 3b29d58..5df4be8 100644
 +nvm install 14.0.0
 +npm install --global yarn
 +
- # Container's command (CMD) execution
- "$@"
+ # Container's command (CMD) execution as runner user
+ 
+ 
