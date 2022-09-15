@@ -1,8 +1,14 @@
+commit 8264905d7fad8d4c16401957ea7d70eac8c82815
+Author: Koen De Vleeschauwer <kdv@kdvelectronics.eu>
+Date:   Wed Sep 14 16:18:41 2022 +0200
+
+    arm64
+
 diff --git a/.github/workflows/build.yml b/.github/workflows/build.yml
-index 3dceb0c..076b64e 100644
+index e886454..6c1f8bf 100644
 --- a/.github/workflows/build.yml
 +++ b/.github/workflows/build.yml
-@@ -37,17 +37,18 @@ jobs:
+@@ -39,17 +39,18 @@ jobs:
      strategy:
        matrix:
          config:
@@ -32,7 +38,7 @@ index 3dceb0c..076b64e 100644
      runs-on: ${{ matrix.config.os }}
      timeout-minutes: 90
  
-@@ -62,6 +63,7 @@ jobs:
+@@ -64,6 +65,7 @@ jobs:
            registry-url: 'https://registry.npmjs.org'
  
        - name: Install Python 3.x
@@ -40,7 +46,7 @@ index 3dceb0c..076b64e 100644
          uses: actions/setup-python@v2
          with:
            python-version: '3.x'
-@@ -114,6 +116,10 @@ jobs:
+@@ -127,6 +129,10 @@ jobs:
              name: Linux_X86-64_zip
            - path: '*Linux_64bit.AppImage'
              name: Linux_X86-64_app_image
@@ -52,10 +58,10 @@ index 3dceb0c..076b64e 100644
              name: macOS_dmg
            - path: '*macOS_64bit.zip'
 diff --git a/arduino-ide-extension/scripts/download-ls.js b/arduino-ide-extension/scripts/download-ls.js
-index 81b9329..7f63204 100755
+index a67c659..c8c126e 100755
 --- a/arduino-ide-extension/scripts/download-ls.js
 +++ b/arduino-ide-extension/scripts/download-ls.js
-@@ -81,6 +81,12 @@
+@@ -82,6 +82,12 @@
        lsSuffix = 'Linux_64bit.tar.gz';
        clangdSuffix = 'Linux_64bit';
        break;

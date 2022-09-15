@@ -10,6 +10,7 @@ WORK_DIR=~/src
 ACCESS_TOKEN=ghp_YOUR_GITHUB_PERSONAL_ACCESS_TOKEN
 REPO_URL=https://github.com/koendv/arduino-ide
 RUNNER_URL=https://github.com/koendv/docker-github-actions-runner
+DISABLE_AUTO_UPDATE=1
 
 # check docker and git available
 

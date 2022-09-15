@@ -1,11 +1,11 @@
-commit 377766df1b9d7a29bade4bc7f450c3d3682058b9
+commit bedea86fbcace26f1927963c2d6d99bd2eab7342
 Author: Koen De Vleeschauwer <kdv@kdvelectronics.eu>
-Date:   Sun Aug 7 18:58:02 2022 +0200
+Date:   Wed Sep 14 16:24:44 2022 +0200
 
     arduino-ide
 
 diff --git a/Dockerfile b/Dockerfile
-index c1d5368..afb696c 100644
+index 2f0f75b..6525f15 100644
 --- a/Dockerfile
 +++ b/Dockerfile
 @@ -1,12 +1,12 @@
@@ -17,8 +17,9 @@ index c1d5368..afb696c 100644
  ENV AGENT_TOOLSDIRECTORY=/opt/hostedtoolcache
  RUN mkdir -p /opt/hostedtoolcache
  
- ARG GH_RUNNER_VERSION="2.294.0"
+-ARG GH_RUNNER_VERSION="2.296.2"
 -ARG TARGETPLATFORM
++ARG GH_RUNNER_VERSION="2.296.1"
 +ARG TARGETPLATFORM="linux/arm64"
  
  SHELL ["/bin/bash", "-o", "pipefail", "-c"]
@@ -41,7 +42,7 @@ index c1d5368..afb696c 100644
  RUN chmod +x /token.sh /entrypoint.sh
  
 diff --git a/entrypoint.sh b/entrypoint.sh
-index a0fbf9e..6a99b65 100644
+index a0fe4e6..8819b93 100644
 --- a/entrypoint.sh
 +++ b/entrypoint.sh
 @@ -129,6 +129,10 @@ if [[ ${_DISABLE_AUTOMATIC_DEREGISTRATION} == "false" ]]; then
