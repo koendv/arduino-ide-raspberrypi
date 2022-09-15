@@ -31,7 +31,7 @@ git add .github/workflows/build.yml
 git add arduino-ide-extension/scripts/download-ls.js
 git commit -m arm64
 git push
-git tag -a 2.0.0-rc8-arm64 -m self-hosted
+git tag -a 2.0.0-arm64 -m self-hosted
 git push --tags
 ```
 
@@ -114,7 +114,7 @@ Output should end with `Listening for Jobs`
 On github.com, go to your fork of the arduino-ide.
 
 - In "Actions", under "Workflows" choose "Arduino IDE", click  "Enable Workflow".
-- Click "Run workflow". Use workflow from "Tags: 2.0.0-rc8-arm64" (the tag created above)
+- Click "Run workflow". Use workflow from "Tags: 2.0.0-arm64" (the tag created above)
 - On the runner, output should be ``Running job: build (self-hosted)``. You can follow what happens in the build through the github web interface.
 
 Build time is less than one hour on a raspberry pi 4b, 8gb ram.
