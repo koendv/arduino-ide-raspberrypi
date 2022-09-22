@@ -4,7 +4,7 @@
 
 This is [arduino-ide 2](https://github.com/arduino/arduino-ide) compiled for raspberry pi os 64-bit and ubuntu bionic arm64.
 
-## Installation
+## Installation on Raspberry Pi OS 64-bit
 
 arduino-ide 2.0 is available as appimage.
 
@@ -12,14 +12,14 @@ Home directory on external usb disk recommended; home directory on internal sd c
 
 To install, download and run the latest appimage from [releases](https://github.com/koendv/arduino-ide-raspberrypi/releases/).
 
-## Ubuntu
+## Installation on Ubuntu arm64
 
 This appimage runs not only on raspberry pi os 64-bit, but also on ubuntu arm64. 
 To run the appimage on ubuntu-arm64 first install libz and fuse:
 ```sh
 sudo apt-get install libz fuse
 ```
-and reboot.
+and reboot. Then download and install the appimage.
 
 ## Developers
 
