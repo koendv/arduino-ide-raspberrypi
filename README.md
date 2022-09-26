@@ -12,6 +12,10 @@ Home directory on external usb disk recommended; home directory on internal sd c
 
 To install, download and run the latest appimage from [releases](https://github.com/koendv/arduino-ide-raspberrypi/releases/).
 
+## Forum
+
+The official forum for discussion of arduino ide 2.0 is [here](https://forum.arduino.cc/c/software/arduino-ide-2-0/).
+
 ## Installation on Ubuntu arm64
 
 This appimage runs not only on raspberry pi os 64-bit, but also on ubuntu arm64. 
