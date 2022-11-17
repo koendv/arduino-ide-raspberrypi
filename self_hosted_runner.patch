@@ -1,11 +1,5 @@
-commit 8264905d7fad8d4c16401957ea7d70eac8c82815
-Author: Koen De Vleeschauwer <kdv@kdvelectronics.eu>
-Date:   Wed Sep 14 16:18:41 2022 +0200
-
-    arm64
-
 diff --git a/.github/workflows/build.yml b/.github/workflows/build.yml
-index e886454..6c1f8bf 100644
+index 5a185a1..b703746 100644
 --- a/.github/workflows/build.yml
 +++ b/.github/workflows/build.yml
 @@ -39,17 +39,18 @@ jobs:
@@ -43,7 +37,7 @@ index e886454..6c1f8bf 100644
  
        - name: Install Python 3.x
 +        if: matrix.config.os != 'self-hosted'
-         uses: actions/setup-python@v2
+         uses: actions/setup-python@v4
          with:
            python-version: '3.x'
 @@ -127,6 +129,10 @@ jobs:
@@ -58,10 +52,10 @@ index e886454..6c1f8bf 100644
              name: macOS_dmg
            - path: '*macOS_64bit.zip'
 diff --git a/arduino-ide-extension/scripts/download-ls.js b/arduino-ide-extension/scripts/download-ls.js
-index a67c659..c8c126e 100755
+index 991dfb0..dbfe6d4 100755
 --- a/arduino-ide-extension/scripts/download-ls.js
 +++ b/arduino-ide-extension/scripts/download-ls.js
-@@ -82,6 +82,12 @@
+@@ -88,6 +88,12 @@
        lsSuffix = 'Linux_64bit.tar.gz';
        clangdSuffix = 'Linux_64bit';
        break;
