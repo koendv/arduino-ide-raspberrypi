@@ -21,7 +21,7 @@ The official forum for discussion of arduino ide 2.0 is [here](https://forum.ard
 This appimage runs not only on raspberry pi os 64-bit, but also on ubuntu arm64. 
 To run the appimage on ubuntu-arm64 first install libz and fuse:
 ```sh
-sudo apt-get install libz fuse
+sudo apt-get install libz1g-dev fuse libfuse-dev
 ```
 and reboot. Then download and install the appimage.
 
