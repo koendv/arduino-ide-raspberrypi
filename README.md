@@ -18,6 +18,8 @@ The official forum for discussion of arduino ide 2.0 is [here](https://forum.ard
 
 ## Installation on Ubuntu arm64
 
+[![arduino ide 2.0](images/ubuntu_small.jpg)](https://github.com/koendv/arduino-ide-raspberrypi/raw/main/images/ubuntu.jpg)
+
 This appimage runs not only on raspberry pi os 64-bit, but also on ubuntu arm64. 
 To run the appimage on ubuntu-arm64 first install libz and fuse:
 ```sh
