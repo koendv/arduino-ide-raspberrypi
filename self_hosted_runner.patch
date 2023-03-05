@@ -1,5 +1,11 @@
+commit 2683a0658a8f39e752c6c22475b28d10fec05d43
+Author: Koen De Vleeschauwer <kdv@kdvelectronics.eu>
+Date:   Sun Mar 5 09:01:19 2023 +0100
+
+    arm64
+
 diff --git a/.github/workflows/build.yml b/.github/workflows/build.yml
-index 5a185a1..b703746 100644
+index 52af464..97b22ba 100644
 --- a/.github/workflows/build.yml
 +++ b/.github/workflows/build.yml
 @@ -39,17 +39,18 @@ jobs:
@@ -44,10 +50,10 @@ index 5a185a1..b703746 100644
              name: Linux_X86-64_zip
            - path: '*Linux_64bit.AppImage'
              name: Linux_X86-64_app_image
-+          - path: '*Linux_ARM64.zip'
-+            name: Linux_ARM64_zip
-+          - path: '*Linux_ARM64.AppImage'
-+            name: Linux_ARM64_app_image
++          - path: '*Linux_arm64.zip'
++            name: Linux_arm64_zip
++          - path: '*Linux_arm64.AppImage'
++            name: Linux_arm64_app_image
            - path: '*macOS_64bit.dmg'
              name: macOS_dmg
            - path: '*macOS_64bit.zip'
@@ -68,3 +74,15 @@ index 991dfb0..dbfe6d4 100755
      case 'win32-x64':
        clangdExecutablePath = path.join(build, 'clangd.exe');
        clangFormatExecutablePath = path.join(build, 'clang-format.exe');
+diff --git a/arduino-ide-extension/src/test/node/boards-service-impl.slow-test.ts b/arduino-ide-extension/src/test/node/boards-service-impl.slow-test.ts
+index dd9ec71..f5de9bd 100644
+--- a/arduino-ide-extension/src/test/node/boards-service-impl.slow-test.ts
++++ b/arduino-ide-extension/src/test/node/boards-service-impl.slow-test.ts
+@@ -33,6 +33,7 @@ describe('boards-service-impl', () => {
+ 
+   describe('search', () => {
+     it('should run search', async function () {
++      this.timeout(20_000);
+       const result = await boardService.search({});
+       expect(result).is.not.empty;
+     });

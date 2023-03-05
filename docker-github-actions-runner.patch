@@ -1,5 +1,11 @@
+commit dd3961c5c96e17e36ffdf6d162187911ba020d4f
+Author: Koen De Vleeschauwer <kdv@kdvelectronics.eu>
+Date:   Sun Mar 5 09:04:46 2023 +0100
+
+    arduino-ide
+
 diff --git a/Dockerfile b/Dockerfile
-index b03dfef..27adfd0 100644
+index 64ed71f..d6bbccd 100644
 --- a/Dockerfile
 +++ b/Dockerfile
 @@ -1,12 +1,12 @@
@@ -11,7 +17,7 @@ index b03dfef..27adfd0 100644
  ENV AGENT_TOOLSDIRECTORY=/opt/hostedtoolcache
  RUN mkdir -p /opt/hostedtoolcache
  
- ARG GH_RUNNER_VERSION="2.300.2"
+ ARG GH_RUNNER_VERSION="2.302.1"
 -ARG TARGETPLATFORM
 +ARG TARGETPLATFORM="linux/arm64"
  
@@ -30,10 +36,10 @@ index b03dfef..27adfd0 100644
  ENTRYPOINT ["/entrypoint.sh"]
  CMD ["./bin/Runner.Listener", "run", "--startuptype", "service"]
 diff --git a/entrypoint.sh b/entrypoint.sh
-index 93698e7..9698f40 100644
+index 5196b7d..193da43 100644
 --- a/entrypoint.sh
 +++ b/entrypoint.sh
-@@ -149,6 +149,10 @@ if [[ ${_DISABLE_AUTOMATIC_DEREGISTRATION} == "false" ]]; then
+@@ -166,6 +166,10 @@ if [[ ${_DISABLE_AUTOMATIC_DEREGISTRATION} == "false" ]]; then
    trap deregister_runner SIGINT SIGQUIT SIGTERM INT TERM QUIT
  fi
  
