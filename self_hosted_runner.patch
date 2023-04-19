@@ -1,11 +1,5 @@
-commit 2683a0658a8f39e752c6c22475b28d10fec05d43
-Author: Koen De Vleeschauwer <kdv@kdvelectronics.eu>
-Date:   Sun Mar 5 09:01:19 2023 +0100
-
-    arm64
-
 diff --git a/.github/workflows/build.yml b/.github/workflows/build.yml
-index 52af464..97b22ba 100644
+index 77c506b..d5b63df 100644
 --- a/.github/workflows/build.yml
 +++ b/.github/workflows/build.yml
 @@ -39,17 +39,18 @@ jobs:
@@ -16,7 +10,7 @@ index 52af464..97b22ba 100644
 -            certificate-secret: WINDOWS_SIGNING_CERTIFICATE_PFX # Name of the secret that contains the certificate.
 -            certificate-password-secret: WINDOWS_SIGNING_CERTIFICATE_PASSWORD # Name of the secret that contains the certificate password.
 -            certificate-extension: pfx  # File extension for the certificate.
--          - os: ubuntu-18.04 # https://github.com/arduino/arduino-ide/issues/259
+-          - os: ubuntu-20.04
 -          - os: macos-latest
 -            # APPLE_SIGNING_CERTIFICATE_P12 secret was produced by following the procedure from:
 -            # https://www.kencochrane.com/2020/08/01/build-and-sign-golang-binaries-for-macos-with-github-actions/#exporting-the-developer-certificate
@@ -27,7 +21,7 @@ index 52af464..97b22ba 100644
 +#            certificate-secret: WINDOWS_SIGNING_CERTIFICATE_PFX # Name of the secret that contains the certificate.
 +#            certificate-password-secret: WINDOWS_SIGNING_CERTIFICATE_PASSWORD # Name of the secret that contains the certificate password.
 +#            certificate-extension: pfx  # File extension for the certificate.
-+#          - os: ubuntu-18.04 # https://github.com/arduino/arduino-ide/issues/259
++#          - os: ubuntu-20.04
 +#          - os: macos-latest
 +#            # APPLE_SIGNING_CERTIFICATE_P12 secret was produced by following the procedure from:
 +#            # https://www.kencochrane.com/2020/08/01/build-and-sign-golang-binaries-for-macos-with-github-actions/#exporting-the-developer-certificate
@@ -46,7 +40,7 @@ index 52af464..97b22ba 100644
          uses: actions/setup-python@v4
          with:
            python-version: '3.x'
-@@ -127,6 +129,10 @@ jobs:
+@@ -128,6 +130,10 @@ jobs:
              name: Linux_X86-64_zip
            - path: '*Linux_64bit.AppImage'
              name: Linux_X86-64_app_image
@@ -75,10 +69,10 @@ index 991dfb0..dbfe6d4 100755
        clangdExecutablePath = path.join(build, 'clangd.exe');
        clangFormatExecutablePath = path.join(build, 'clang-format.exe');
 diff --git a/arduino-ide-extension/src/test/node/boards-service-impl.slow-test.ts b/arduino-ide-extension/src/test/node/boards-service-impl.slow-test.ts
-index dd9ec71..f5de9bd 100644
+index fe89cc4..c217487 100644
 --- a/arduino-ide-extension/src/test/node/boards-service-impl.slow-test.ts
 +++ b/arduino-ide-extension/src/test/node/boards-service-impl.slow-test.ts
-@@ -33,6 +33,7 @@ describe('boards-service-impl', () => {
+@@ -25,6 +25,7 @@ describe('boards-service-impl', () => {
  
    describe('search', () => {
      it('should run search', async function () {

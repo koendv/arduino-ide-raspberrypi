@@ -1,29 +1,30 @@
-commit dd3961c5c96e17e36ffdf6d162187911ba020d4f
+commit eae167aef3bb3ea20e44026174343562a5ce61b2
 Author: Koen De Vleeschauwer <kdv@kdvelectronics.eu>
-Date:   Sun Mar 5 09:04:46 2023 +0100
+Date:   Wed Apr 19 18:45:36 2023 +0200
 
     arduino-ide
 
 diff --git a/Dockerfile b/Dockerfile
-index 64ed71f..d6bbccd 100644
+index 7bd4a1c..e0f54a3 100644
 --- a/Dockerfile
 +++ b/Dockerfile
-@@ -1,12 +1,12 @@
+@@ -1,5 +1,5 @@
  # hadolint ignore=DL3007
 -FROM myoung34/github-runner-base:latest
 +FROM myoung34/github-runner-base:ubuntu-bionic
  LABEL maintainer="myoung34@my.apsu.edu"
  
  ENV AGENT_TOOLSDIRECTORY=/opt/hostedtoolcache
- RUN mkdir -p /opt/hostedtoolcache
+@@ -7,7 +7,7 @@ RUN mkdir -p /opt/hostedtoolcache
  
- ARG GH_RUNNER_VERSION="2.302.1"
+ ARG GH_RUNNER_VERSION="2.303.0"
+ 
 -ARG TARGETPLATFORM
 +ARG TARGETPLATFORM="linux/arm64"
  
  SHELL ["/bin/bash", "-o", "pipefail", "-c"]
  
-@@ -21,5 +21,11 @@ RUN chmod +x /actions-runner/install_actions.sh \
+@@ -22,5 +22,11 @@ RUN chmod +x /actions-runner/install_actions.sh \
  COPY token.sh entrypoint.sh app_token.sh /
  RUN chmod +x /token.sh /entrypoint.sh /app_token.sh
  
