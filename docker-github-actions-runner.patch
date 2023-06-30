@@ -1,11 +1,11 @@
-commit eae167aef3bb3ea20e44026174343562a5ce61b2
+commit b387877134205ea0b21cea7fc5b1a894899c54eb
 Author: Koen De Vleeschauwer <kdv@kdvelectronics.eu>
-Date:   Wed Apr 19 18:45:36 2023 +0200
+Date:   Fri Jun 30 19:35:40 2023 +0200
 
     arduino-ide
 
 diff --git a/Dockerfile b/Dockerfile
-index 7bd4a1c..e0f54a3 100644
+index 39adc19..c1f2f1a 100644
 --- a/Dockerfile
 +++ b/Dockerfile
 @@ -1,5 +1,5 @@
@@ -17,7 +17,7 @@ index 7bd4a1c..e0f54a3 100644
  ENV AGENT_TOOLSDIRECTORY=/opt/hostedtoolcache
 @@ -7,7 +7,7 @@ RUN mkdir -p /opt/hostedtoolcache
  
- ARG GH_RUNNER_VERSION="2.303.0"
+ ARG GH_RUNNER_VERSION="2.305.0"
  
 -ARG TARGETPLATFORM
 +ARG TARGETPLATFORM="linux/arm64"
@@ -37,11 +37,11 @@ index 7bd4a1c..e0f54a3 100644
  ENTRYPOINT ["/entrypoint.sh"]
  CMD ["./bin/Runner.Listener", "run", "--startuptype", "service"]
 diff --git a/entrypoint.sh b/entrypoint.sh
-index 5196b7d..193da43 100644
+index 5ae7108..32e5755 100644
 --- a/entrypoint.sh
 +++ b/entrypoint.sh
-@@ -166,6 +166,10 @@ if [[ ${_DISABLE_AUTOMATIC_DEREGISTRATION} == "false" ]]; then
-   trap deregister_runner SIGINT SIGQUIT SIGTERM INT TERM QUIT
+@@ -173,6 +173,10 @@ if [[ ${_START_DOCKER_SERVICE} == "true" ]]; then
+   service docker start
  fi
  
 +. $HOME/.nvm/nvm.sh

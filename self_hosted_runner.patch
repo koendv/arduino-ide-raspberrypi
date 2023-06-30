@@ -1,5 +1,11 @@
+commit 94f6b0dfaf5d5871d56d27a2bda0205a61f1e261
+Author: Koen De Vleeschauwer <kdv@kdvelectronics.eu>
+Date:   Fri Jun 30 19:31:14 2023 +0200
+
+    arm64
+
 diff --git a/.github/workflows/build.yml b/.github/workflows/build.yml
-index 77c506b..d5b63df 100644
+index 28e07c6..28549c2 100644
 --- a/.github/workflows/build.yml
 +++ b/.github/workflows/build.yml
 @@ -39,17 +39,18 @@ jobs:
@@ -9,7 +15,7 @@ index 77c506b..d5b63df 100644
 -          - os: windows-2019
 -            certificate-secret: WINDOWS_SIGNING_CERTIFICATE_PFX # Name of the secret that contains the certificate.
 -            certificate-password-secret: WINDOWS_SIGNING_CERTIFICATE_PASSWORD # Name of the secret that contains the certificate password.
--            certificate-extension: pfx  # File extension for the certificate.
+-            certificate-extension: pfx # File extension for the certificate.
 -          - os: ubuntu-20.04
 -          - os: macos-latest
 -            # APPLE_SIGNING_CERTIFICATE_P12 secret was produced by following the procedure from:
@@ -20,7 +26,7 @@ index 77c506b..d5b63df 100644
 +#          - os: windows-2019
 +#            certificate-secret: WINDOWS_SIGNING_CERTIFICATE_PFX # Name of the secret that contains the certificate.
 +#            certificate-password-secret: WINDOWS_SIGNING_CERTIFICATE_PASSWORD # Name of the secret that contains the certificate password.
-+#            certificate-extension: pfx  # File extension for the certificate.
++#            certificate-extension: pfx # File extension for the certificate.
 +#          - os: ubuntu-20.04
 +#          - os: macos-latest
 +#            # APPLE_SIGNING_CERTIFICATE_P12 secret was produced by following the procedure from:
@@ -51,28 +57,11 @@ index 77c506b..d5b63df 100644
            - path: '*macOS_64bit.dmg'
              name: macOS_dmg
            - path: '*macOS_64bit.zip'
-diff --git a/arduino-ide-extension/scripts/download-ls.js b/arduino-ide-extension/scripts/download-ls.js
-index 991dfb0..dbfe6d4 100755
---- a/arduino-ide-extension/scripts/download-ls.js
-+++ b/arduino-ide-extension/scripts/download-ls.js
-@@ -88,6 +88,12 @@
-       lsSuffix = 'Linux_64bit.tar.gz';
-       clangdSuffix = 'Linux_64bit';
-       break;
-+    case 'linux-arm64':
-+      clangdExecutablePath = path.join(build, 'clangd');
-+      clangFormatExecutablePath = path.join(build, 'clang-format');
-+      lsSuffix = 'Linux_ARM64.tar.gz';
-+      clangdSuffix = 'Linux_ARM64';
-+      break;
-     case 'win32-x64':
-       clangdExecutablePath = path.join(build, 'clangd.exe');
-       clangFormatExecutablePath = path.join(build, 'clang-format.exe');
 diff --git a/arduino-ide-extension/src/test/node/boards-service-impl.slow-test.ts b/arduino-ide-extension/src/test/node/boards-service-impl.slow-test.ts
-index fe89cc4..c217487 100644
+index de243d2..557de7b 100644
 --- a/arduino-ide-extension/src/test/node/boards-service-impl.slow-test.ts
 +++ b/arduino-ide-extension/src/test/node/boards-service-impl.slow-test.ts
-@@ -25,6 +25,7 @@ describe('boards-service-impl', () => {
+@@ -20,6 +20,7 @@ describe('boards-service-impl', () => {
  
    describe('search', () => {
      it('should run search', async function () {
@@ -80,3 +69,16 @@ index fe89cc4..c217487 100644
        const result = await boardService.search({});
        expect(result).is.not.empty;
      });
+diff --git a/arduino-ide-extension/src/test/node/test-bindings.ts b/arduino-ide-extension/src/test/node/test-bindings.ts
+index 30d8513..c83ef9a 100644
+--- a/arduino-ide-extension/src/test/node/test-bindings.ts
++++ b/arduino-ide-extension/src/test/node/test-bindings.ts
+@@ -409,7 +409,7 @@ export async function startDaemon(
+   configService.onStart();
+   daemon.onStart();
+   await Promise.all([
+-    waitForEvent(daemon.onDaemonStarted, 10_000),
++    waitForEvent(daemon.onDaemonStarted, 20_000),
+     coreClientProvider.client,
+   ]);
+   if (startCustomizations) {
