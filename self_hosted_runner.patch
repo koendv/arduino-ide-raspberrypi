@@ -1,14 +1,8 @@
-commit 94f6b0dfaf5d5871d56d27a2bda0205a61f1e261
-Author: Koen De Vleeschauwer <kdv@kdvelectronics.eu>
-Date:   Fri Jun 30 19:31:14 2023 +0200
-
-    arm64
-
 diff --git a/.github/workflows/build.yml b/.github/workflows/build.yml
-index 28e07c6..28549c2 100644
+index 1c830648..ab6ac95a 100644
 --- a/.github/workflows/build.yml
 +++ b/.github/workflows/build.yml
-@@ -39,17 +39,18 @@ jobs:
+@@ -67,17 +67,18 @@ jobs:
      strategy:
        matrix:
          config:
@@ -38,15 +32,15 @@ index 28e07c6..28549c2 100644
      runs-on: ${{ matrix.config.os }}
      timeout-minutes: 90
  
-@@ -64,6 +65,7 @@ jobs:
-           registry-url: 'https://registry.npmjs.org'
+@@ -93,6 +94,7 @@ jobs:
+           cache: 'yarn'
  
        - name: Install Python 3.x
 +        if: matrix.config.os != 'self-hosted'
          uses: actions/setup-python@v4
          with:
            python-version: '3.x'
-@@ -128,6 +130,10 @@ jobs:
+@@ -166,6 +168,10 @@ jobs:
              name: Linux_X86-64_zip
            - path: '*Linux_64bit.AppImage'
              name: Linux_X86-64_app_image
@@ -58,7 +52,7 @@ index 28e07c6..28549c2 100644
              name: macOS_dmg
            - path: '*macOS_64bit.zip'
 diff --git a/arduino-ide-extension/src/test/node/boards-service-impl.slow-test.ts b/arduino-ide-extension/src/test/node/boards-service-impl.slow-test.ts
-index de243d2..557de7b 100644
+index fbd5aeb4..a3b865bb 100644
 --- a/arduino-ide-extension/src/test/node/boards-service-impl.slow-test.ts
 +++ b/arduino-ide-extension/src/test/node/boards-service-impl.slow-test.ts
 @@ -20,6 +20,7 @@ describe('boards-service-impl', () => {
@@ -69,11 +63,11 @@ index de243d2..557de7b 100644
        const result = await boardService.search({});
        expect(result).is.not.empty;
      });
-diff --git a/arduino-ide-extension/src/test/node/test-bindings.ts b/arduino-ide-extension/src/test/node/test-bindings.ts
-index 30d8513..c83ef9a 100644
---- a/arduino-ide-extension/src/test/node/test-bindings.ts
-+++ b/arduino-ide-extension/src/test/node/test-bindings.ts
-@@ -409,7 +409,7 @@ export async function startDaemon(
+diff --git a/arduino-ide-extension/src/test/node/node-test-bindings.ts b/arduino-ide-extension/src/test/node/node-test-bindings.ts
+index 2b4c651f..c61b00f5 100644
+--- a/arduino-ide-extension/src/test/node/node-test-bindings.ts
++++ b/arduino-ide-extension/src/test/node/node-test-bindings.ts
+@@ -318,7 +318,7 @@ export async function startDaemon(
    configService.onStart();
    daemon.onStart();
    await Promise.all([
