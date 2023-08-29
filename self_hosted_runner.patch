@@ -76,3 +76,16 @@ index 2b4c651f..c61b00f5 100644
      coreClientProvider.client,
    ]);
    if (startCustomizations) {
+diff --git a/arduino-ide-extension/package.json b/arduino-ide-extension/package.json
+index eccac3c5..d30a39e3 100644
+--- a/arduino-ide-extension/package.json
++++ b/arduino-ide-extension/package.json
+@@ -140,7 +140,7 @@
+     "reporter": "spec",
+     "colors": true,
+     "watch-extensions": "js",
+-    "timeout": 10000
++    "timeout": 20000
+   },
+   "files": [
+     "lib",
