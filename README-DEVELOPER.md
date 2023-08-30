@@ -30,6 +30,7 @@ patch -p1 < ../arduino-ide-raspberrypi/self_hosted_runner.patch
 git add .github/workflows/build.yml
 git add arduino-ide-extension/src/test/node/boards-service-impl.slow-test.ts
 git add arduino-ide-extension/src/test/node/node-test-bindings.ts
+git add arduino-ide-extension/package.json
 git commit -m arm64
 git push
 git tag -a 2.2.0-arm64 -m self-hosted
