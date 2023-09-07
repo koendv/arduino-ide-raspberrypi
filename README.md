@@ -14,7 +14,7 @@ To install, download and run the latest appimage from [releases](https://github.
 
 ## Forum
 
-The official forum for discussion of arduino ide 2.0 is [here](https://forum.arduino.cc/c/software/arduino-ide-2-0/).
+The official forum for discussion of arduino ide 2.x is [here](https://forum.arduino.cc/c/software/ide-2-x/).
 
 ## Installation on Ubuntu arm64
 
