@@ -12,6 +12,12 @@ Home directory on external usb disk recommended; home directory on internal sd c
 
 To install, download and run the latest appimage from [releases](https://github.com/koendv/arduino-ide-raspberrypi/releases/).
 
+On Raspberry PI OS 11, first install fuse:
+```sh
+sudo apt-get install fuse libfuse-dev
+
+```
+
 ## Forum
 
 The official forum for discussion of arduino ide 2.x is [here](https://forum.arduino.cc/c/software/ide-2-x/).
